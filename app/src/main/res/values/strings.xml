@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DetecGalaxy</string>
+    <string name="nombre">Nombre</string>
+    <string name="edad">Edad</string>
+    <string name="correo">Correo</string>
+    <string name="curso">Curso</string>
+    <string name="telefono">Telefono</string>
+    <string name="nombre_acudiente">Nombre Acudiente</string>
+    <string name="parentesco">Parentesco</string>
+    <string name="siguiente">SIGUIENTE</string>
 </resources>
