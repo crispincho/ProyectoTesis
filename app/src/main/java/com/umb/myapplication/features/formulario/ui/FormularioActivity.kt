@@ -16,7 +16,7 @@ class FormularioActivity : AppCompatActivity() {
             this,
             R.layout.activity_formulario
         )
-        val factory = FormularioViewmodelFactory(application)
+        val factory = FormularioViewmodelFactory(application, this)
         binding.viewmodel = ViewModelProvider(this,factory).get(FormularioViewmodel::class.java)
         binding.lifecycleOwner = this
     }

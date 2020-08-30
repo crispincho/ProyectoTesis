@@ -8,4 +8,5 @@
     <string name="nombre_acudiente">Nombre Acudiente</string>
     <string name="parentesco">Parentesco</string>
     <string name="siguiente">SIGUIENTE</string>
+    <string name="requerido">Esta campo es requerido</string>
 </resources>

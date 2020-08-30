@@ -4,6 +4,8 @@ import android.content.Context
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.umb.myapplication.features.formulario.data.entities.User
+import java.util.*
 
 object FormularioRepository {
 
@@ -14,4 +16,7 @@ object FormularioRepository {
         FirebaseApp.initializeApp(context)
     }
 
+    fun insertUser(user:User){
+        databaseReference.child("Results").child(user.id).setValue(user)
+    }
 }
