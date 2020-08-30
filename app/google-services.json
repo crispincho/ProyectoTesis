@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "461084404499",
+    "firebase_url": "https://detecgalaxy.firebaseio.com",
+    "project_id": "detecgalaxy",
+    "storage_bucket": "detecgalaxy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461084404499:android:9eb73afb87362e7969c8e6",
+        "android_client_info": {
+          "package_name": "com.umb.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461084404499-p3ok5796916h87kmibl3s1rrvtbveh3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.umb.myapplication",
+            "certificate_hash": "291853074d21c8ee33c4288a9d3d2de155233247"
+          }
+        },
+        {
+          "client_id": "461084404499-eov2l13jnul8on2897i5o1agqif2pelm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Gaznpq5k9usZ53bH6AO-sr2e_DZe7E8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461084404499-eov2l13jnul8on2897i5o1agqif2pelm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
