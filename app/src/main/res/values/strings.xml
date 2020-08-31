@@ -9,4 +9,7 @@
     <string name="parentesco">Parentesco</string>
     <string name="siguiente">SIGUIENTE</string>
     <string name="requerido">Esta campo es requerido</string>
+    <string name="status_time">Tiempo de la prueba</string>
+    <string name="status_point">Puntos de la prueba</string>
+    <string name="test_description">Descripcion de la pruba</string>
 </resources>
