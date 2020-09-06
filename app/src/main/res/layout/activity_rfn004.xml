@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.umb.myapplication.features.rfn004.ui.viewmodel.Rfn004ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/test_backgroudn"
+        tools:context=".features.rfn004.ui.Rfn004Activity">
+
+
+        <Button
+            android:id="@+id/buttonEquals"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/buttons_background"
+            android:onClick="@{()-> viewmodel.playNext(buttonEquals,buttonDifferent)}"
+            android:text="@string/iguales"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonDifferent"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/buttons_background"
+            android:text="@string/diferentes"
+            android:onClick="@{()-> viewmodel.playNext(buttonEquals,buttonDifferent)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/prueba"
+            android:layout_width="181dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="204dp"
+            android:layout_marginRight="204dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
