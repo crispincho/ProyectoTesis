@@ -12,4 +12,6 @@
     <string name="status_time">Tiempo de la prueba</string>
     <string name="status_point">Puntos de la prueba</string>
     <string name="test_description">Descripcion de la pruba</string>
+    <string name="button_opcion">Opcion de respuesta</string>
+    <string name="button_reply">respuesta boton</string>
 </resources>
