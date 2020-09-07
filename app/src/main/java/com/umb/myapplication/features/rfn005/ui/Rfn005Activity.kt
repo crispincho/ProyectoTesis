@@ -194,7 +194,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
     }
 
     /**Navigator functions**/
-    override fun navigateToNextTest() {
+    override fun toNextActvity() {
         val intent = Intent(this, Rfn006Activity::class.java)
         startActivity(intent)
     }

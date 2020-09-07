@@ -123,7 +123,7 @@ class Rfn005ViewModel(application: Application, val context: Context) :
                     )
                 )
             }
-            navigator?.navigateToNextTest()
+            navigator?.toNextActvity()
         }
         generateRamdonDirections()
     }

@@ -2,7 +2,7 @@ package com.umb.myapplication.features.rfn005.ui
 
 interface Rfn005Navigator {
 
-    fun navigateToNextTest()
+    fun toNextActvity()
 
     fun activateViews()
 
