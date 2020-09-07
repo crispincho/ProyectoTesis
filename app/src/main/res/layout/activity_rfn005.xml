@@ -16,16 +16,264 @@
         android:background="@drawable/test_backgroudn"
         tools:context=".features.rfn005.ui.Rfn005Activity">
 
-        <fragment
-            android:id="@+id/TODO"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/imageButton12"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton11"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton24"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton10"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton11"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton10"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton22"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton13"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton12"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton24"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/imageButton22"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton15"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton14"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton26"
+            app:layout_constraintStart_toEndOf="@+id/imageButton24"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton17"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton16"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toEndOf="@+id/imageButton26"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton14"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton13"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton18"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton16"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toEndOf="@+id/imageButton24"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <include
+            android:id="@+id/statusBar"
+            layout="@layout/status_bar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginLeft="180dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:contentDescription="@string/button_opcion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout="@layout/status_bar" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton20"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton21"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton22"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton23"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton24"
+            app:layout_constraintStart_toEndOf="@+id/imageButton22"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton25"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton26"
+            app:layout_constraintStart_toEndOf="@+id/imageButton24"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton27"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintStart_toEndOf="@+id/imageButton26"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton22"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton24"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton26"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintStart_toEndOf="@+id/imageButton24"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton24"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton28"
+            app:layout_constraintStart_toEndOf="@+id/imageButton20"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <ImageButton
+            android:id="@+id/imageButton28"
+            android:layout_width="@dimen/button_arrow"
+            android:layout_height="@dimen/button_arrow"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/arrow_background"
+            android:contentDescription="@string/button_opcion"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_east_24px" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statusBar">
+
+            <ImageButton
+                android:id="@+id/imageButton01"
+                android:layout_width="@dimen/button_arrow"
+                android:layout_height="@dimen/button_arrow"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="0dp"
+                android:background="@drawable/arrow_background"
+                android:contentDescription="@string/button_reply"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_east_24px" />
+
+            <ImageButton
+                android:id="@+id/imageButton02"
+                android:layout_width="@dimen/button_arrow"
+                android:layout_height="@dimen/button_arrow"
+                android:background="@drawable/arrow_background"
+                android:contentDescription="@string/button_reply"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_east_24px" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
