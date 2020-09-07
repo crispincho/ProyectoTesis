@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class Rfn005ViewModel(application: Application, val context: Context) :
     AndroidViewModel(application) {
@@ -25,6 +26,8 @@ class Rfn005ViewModel(application: Application, val context: Context) :
     var navigator: Rfn005Navigator? = null
 
     var idUser: String? = null
+
+    private lateinit var startDate: Date
 
     private var score = 0
     private var wrongAnswers = 0
@@ -40,6 +43,7 @@ class Rfn005ViewModel(application: Application, val context: Context) :
                 Thread.sleep(mediaPlayer.duration.toLong())
             }
             navigator?.activateViews()
+            startDate = Date()
         }
     }
 
@@ -114,7 +118,8 @@ class Rfn005ViewModel(application: Application, val context: Context) :
                     idUser!!, Rfn005Results(
                         respuestasCorrectas = score,
                         respuestasOmitidas = omittedAnswers,
-                        respuestasIncorrectas = wrongAnswers
+                        respuestasIncorrectas = wrongAnswers,
+                        tiempo = Date().time - startDate.time
                     )
                 )
             }

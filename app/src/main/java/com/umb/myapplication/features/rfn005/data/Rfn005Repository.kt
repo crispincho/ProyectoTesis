@@ -8,8 +8,8 @@ import com.umb.myapplication.features.rfn005.data.entities.Rfn005Results
 
 object Rfn005Repository {
 
-    val firebase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    val databaseReference: DatabaseReference = firebase.reference
+    private val firebase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val databaseReference: DatabaseReference = firebase.reference
 
     fun initFirebase(context: Context) {
         FirebaseApp.initializeApp(context)
