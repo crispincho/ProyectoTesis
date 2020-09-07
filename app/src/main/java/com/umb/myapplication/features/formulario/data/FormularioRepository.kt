@@ -17,6 +17,6 @@ object FormularioRepository {
     }
 
     fun insertUser(user:User){
-        databaseReference.child("Results").child(user.id).setValue(user)
+        databaseReference.child("participantes").child(user.id).setValue(user)
     }
 }

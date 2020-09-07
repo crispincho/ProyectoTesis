@@ -6,9 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.features.formulario.data.FormularioRepository
 import com.umb.myapplication.features.formulario.data.entities.User
+import com.umb.myapplication.features.formulario.ui.FormularioNavigator
+
+
 
 class FormularioViewmodel(application: Application, val context: Context) :
     AndroidViewModel(application) {
+    var navigator: FormularioNavigator? =null
     val nombre = MutableLiveData<String>()
     val isVisibleName = MutableLiveData<Boolean>()
     val edad = MutableLiveData<String>()
@@ -43,9 +47,15 @@ class FormularioViewmodel(application: Application, val context: Context) :
                 guardianName = nombreAcudiente.value!!,
                 relationship = parentesco.value!!
             )
-
             FormularioRepository.insertUser(user)
+
+
+            navigator?.toNextActvity(idUser = user.id)
         }
+
+
     }
+
+
 
 }

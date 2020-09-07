@@ -1,32 +1,38 @@
 package com.umb.myapplication.features.rfn004.ui.viewmodel
 
-import android.annotation.SuppressLint
+
 import android.app.Application
 import android.content.Context
 import android.media.MediaPlayer
 import android.widget.Button
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.R
+import com.umb.myapplication.features.rfn004.data.Rfn004Repository
+import com.umb.myapplication.features.rfn004.ui.Rfn004Navigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.net.URI
-import java.util.concurrent.TimeUnit
 
 class Rfn004ViewModel(application: Application, val context: Context) :
     AndroidViewModel(application) {
 
-    var puntos = MutableLiveData<String>()
-    val songList = listOf<Int>(R.raw.instruccion, R.raw.carro, R.raw.casa, R.raw.perro)
-    val resCorrect = listOf<Boolean>(false, true, false, true)
-    var resUser: MutableList<Boolean> = mutableListOf()
-    var index: Int = 0
-    var mediaPlayer: MediaPlayer = MediaPlayer.create(context, songList[index])
-    var startTime: Int = 0
-    var finalTime: Int = 0
+    private var puntos = MutableLiveData<String>()
+    private var navigator: Rfn004Navigator?=null
+    private val songList = listOf(R.raw.rfn004_instructivo, R.raw.rfn004_banio_panio, R.raw.rfn004_via_dia,
+                                R.raw.rfn004_capa_cana, R.raw.rfn004_foto_foco, R.raw.rfn004_unia_unia,
+                                R.raw.rfn004_foca_foca, R.raw.rfn004_cania_calla, R.raw.rfn004_carro_jarro,
+                                R.raw.rfn004_caja_caja, R.raw.rfn004_paso_peso, R.raw.rfn004_misa_mesa,
+                                R.raw.rfn004_gato_gato, R.raw.rfn004_callo_callo, R.raw.rfn004_mano_mano,
+                                R.raw.rfn004_cama_cama, R.raw.rfn004_pantera_bandera, R.raw.rfn004_sifon_sillon,
+                                R.raw.rfn004_pasa_pasa, R.raw.rfn004_vara_bala)
+    private val resCorrect = listOf(false, false, false, false,true,true,false,false,true,false,false,true,true,true,true,false,false,true,false)
+    private var resUser: MutableList<Boolean> = mutableListOf()
+    private var index: Int = 0
+    private var mediaPlayer: MediaPlayer = MediaPlayer.create(context, songList[index])
+    private var startTime: Int = 0
+    private var finalTime: Int = 0
 
     init {
         actionButtoniniciar()
@@ -34,7 +40,7 @@ class Rfn004ViewModel(application: Application, val context: Context) :
     }
 
 
-    fun actionButtoniniciar() {
+    private fun actionButtoniniciar() {
         mediaPlayer.start()
         finalTime = mediaPlayer.duration
         startTime = mediaPlayer.currentPosition
@@ -57,23 +63,29 @@ class Rfn004ViewModel(application: Application, val context: Context) :
                 button1.isEnabled = true
                 button2.isEnabled = true
             }
+        saveRes(button1)
+        }else{
+            Rfn004Repository.initFirebase(context)
+            Rfn004Repository.insertResultTestRFN004(navigator!!.getUserID(), puntos.value!!.toInt())
+
         }
     }
 
-    fun saveRes(button1: Button) {
-        var name: String = button1.id.toString()
-        if (name.equals("buttonEquals")) {
+    private fun saveRes(button1: Button) {
+        val name: String = button1.id.toString()
+        if (name == "buttonEquals") {
             resUser.add(true)
             consultRes(true)
-        } else if (name.equals("buttonDifferent")) {
+        } else if (name == "buttonDifferent") {
             consultRes(false)
             resUser.add(false)
         }
     }
 
-    fun consultRes (boolean: Boolean){
-        if (boolean==resCorrect.get(index))
+    private fun consultRes (boolean: Boolean){
+        if (boolean== resCorrect[index])
             if(!puntos.value.isNullOrEmpty() )
             puntos.value = (puntos.value!!.toInt() + 1).toString()
+
     }
 }
