@@ -26,6 +26,7 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
         )
         val factory = Rfn006ViewModelFactory(application, this)
         val viewmodel = ViewModelProvider(this, factory).get(Rfn006ViewModel::class.java)
+        viewmodel.navigator = this
         viewmodel.idUser = intent.getStringExtra("idUser")
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()

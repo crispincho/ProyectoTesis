@@ -16,4 +16,6 @@
     <string name="test_description">Descripcion de la pruba</string>
     <string name="button_opcion">Opcion de respuesta</string>
     <string name="button_reply">respuesta boton</string>
+    <string name="exist">Existe</string>
+    <string name="not_exist">No existe</string>
 </resources>

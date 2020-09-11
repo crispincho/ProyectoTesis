@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="rfn006_text">35sp</dimen>
     <dimen name="button_arrow">70dp</dimen>
 </resources>

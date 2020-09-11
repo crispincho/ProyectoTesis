@@ -6,4 +6,6 @@
     <color name="colorButtons">#90707070</color>
     <color name="white">#FFFFFF</color>
     <color name="colorButtonSelected">#9050ECAB</color>
+    <color name="existsText">@color/colorAccent</color>
+    <color name="notExistsText">#90EC115C</color>
 </resources>
