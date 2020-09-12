@@ -23,7 +23,7 @@ class FormularioViewmodel(application: Application, val context: Context) :
     val isVisibleCourse = MutableLiveData<Boolean>()
     val telefono = MutableLiveData<String>()
     val isVisibleTelephone = MutableLiveData<Boolean>()
-    val nombreAcudiente = MutableLiveData<String>()
+    val codigoGuardian = MutableLiveData<String>()
     val isVisibleGuardian = MutableLiveData<Boolean>()
     val parentesco = MutableLiveData<String>()
     val isVisibleRelationship = MutableLiveData<Boolean>()
@@ -35,16 +35,16 @@ class FormularioViewmodel(application: Application, val context: Context) :
         isVisibleEmail.value = correo.value.isNullOrEmpty()
         isVisibleCourse.value = grado.value.isNullOrEmpty()
         isVisibleTelephone.value = telefono.value.isNullOrEmpty()
-        isVisibleGuardian.value = nombreAcudiente.value.isNullOrEmpty()
+        isVisibleGuardian.value = codigoGuardian.value.isNullOrEmpty()
         isVisibleRelationship.value = parentesco.value.isNullOrEmpty()
-        if (!nombre.value.isNullOrEmpty() && !edad.value.isNullOrEmpty() && !correo.value.isNullOrEmpty() && !grado.value.isNullOrEmpty() && !telefono.value.isNullOrEmpty() && !nombreAcudiente.value.isNullOrEmpty() && !parentesco.value.isNullOrEmpty()) {
+        if (!nombre.value.isNullOrEmpty() && !edad.value.isNullOrEmpty() && !correo.value.isNullOrEmpty() && !grado.value.isNullOrEmpty() && !telefono.value.isNullOrEmpty() && !codigoGuardian.value.isNullOrEmpty() && !parentesco.value.isNullOrEmpty()) {
             val user = User(
                 name = nombre.value!!,
                 age = edad.value!!.toInt(),
                 email = correo.value!!,
                 course = grado.value!!,
                 telephone = telefono.value!!,
-                guardianName = nombreAcudiente.value!!,
+                guardianName = codigoGuardian.value!!,
                 relationship = parentesco.value!!
             )
             FormularioRepository.insertUser(user)
