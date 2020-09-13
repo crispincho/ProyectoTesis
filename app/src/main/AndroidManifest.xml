@@ -14,11 +14,11 @@
         <activity
             android:name=".features.rfn006.ui.Rfn006Activity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".features.rfn005.ui.Rfn005Activity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".features.rfn004.ui.Rfn004Activity" />
         <activity android:name=".features.formulario.ui.FormularioActivity">
             <!-- <intent-filter>
