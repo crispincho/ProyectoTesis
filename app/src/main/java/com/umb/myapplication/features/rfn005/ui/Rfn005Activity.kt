@@ -165,7 +165,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
     }
 
     /**Animations**/
-    fun rotateButton(button: ImageButton, direction: Int) {
+    private fun rotateButton(button: ImageButton, direction: Int) {
         button.isSelected = false
         var animator = ObjectAnimator.ofFloat(button, "rotation", 0f)
         when (direction) {
@@ -188,7 +188,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         }
     }
 
-    fun selectedButton(view: View) {
+    private fun selectedButton(view: View) {
         val presedJump: Animation = AnimationUtils.loadAnimation(this, R.anim.button_selected)
         view.startAnimation(presedJump)
     }

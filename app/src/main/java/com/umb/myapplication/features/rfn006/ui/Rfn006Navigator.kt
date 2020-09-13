@@ -10,6 +10,6 @@ interface Rfn006Navigator {
 
     fun goToNextTest()
 
-    fun slideView(arrow: View, text: View, isRigth: Boolean, x: Int, doOnEnd: (x: Int) -> Unit)
+    fun slideView(element: Int, isRigth: Boolean, x: Int, doOnEnd: (x: Int) -> Unit)
 
 }

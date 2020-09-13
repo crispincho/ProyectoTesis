@@ -3,7 +3,6 @@ package com.umb.myapplication.features.rfn006.ui.viewmodel
 import android.app.Application
 import android.content.Context
 import android.media.MediaPlayer
-import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.R
@@ -65,7 +64,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
         showThreethText.value = true
     }
 
-    fun selectSide(arrow: View, text: View, element: Int) {
+    fun selectSide(element: Int) {
         if (!::startTime.isInitialized)
             return
         val actualIndex = when (element) {
@@ -82,7 +81,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
                 } else {
                     listWordResult.add(Word(description = listOfWords[actualIndex], answer = false))
                 }
-                navigator?.slideView(arrow, text, false, element, ::nextWord)
+                navigator?.slideView(element, false, element, ::nextWord)
             }
             4, 5, 6 -> {
                 if (actualIndex < listOfWords.size && !isExistWordlist[actualIndex]) {
@@ -91,7 +90,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
                 } else {
                     listWordResult.add(Word(description = listOfWords[actualIndex], answer = false))
                 }
-                navigator?.slideView(arrow, text, true, element - 3, ::nextWord)
+                navigator?.slideView(element, true, element - 3, ::nextWord)
             }
         }
     }

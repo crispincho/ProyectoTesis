@@ -67,14 +67,49 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
     }
 
     /**Animations**/
-    override fun slideView(
-        arrow: View,
-        text: View,
-        isRigth: Boolean,
-        x: Int,
-        doOnEnd: (x: Int) -> Unit
-    ) {
+    override fun slideView(element: Int, isRigth: Boolean, x: Int, doOnEnd: (x: Int) -> Unit) {
+        val otherArrow: View
+        val arrow: View
+        val text: View
+        when (element) {
+            1, 4 -> {
+                text = binding.textView10
+                if (isRigth) {
+                    arrow = binding.imageView5
+                    otherArrow = binding.imageView4
+                } else {
+                    arrow = binding.imageView4
+                    otherArrow = binding.imageView5
+                }
+            }
+            2, 5 -> {
+                text = binding.textView11
+                if (isRigth) {
+                    arrow = binding.imageView8
+                    otherArrow = binding.imageView6
+                } else {
+                    arrow = binding.imageView6
+                    otherArrow = binding.imageView8
+                }
+            }
+            3, 6 -> {
+                text = binding.textView12
+                if (isRigth) {
+                    arrow = binding.imageView9
+                    otherArrow = binding.imageView7
+                } else {
+                    arrow = binding.imageView7
+                    otherArrow = binding.imageView9
+                }
+            }
+            else -> {
+                arrow = binding.imageView4
+                otherArrow = binding.imageView5
+                text = binding.textView10
+            }
+        }
         arrow.isClickable = false
+        otherArrow.isClickable = false
         val fadedArrow = ObjectAnimator.ofFloat(arrow, "alpha", 1f, 0f)
         val slideText = if (isRigth)
             ObjectAnimator.ofFloat(text, "x", text.x, text.x + 500)
@@ -90,6 +125,7 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
             override fun onAnimationEnd(p0: Animator?) {
                 doOnEnd(x)
                 arrow.isClickable = true
+                otherArrow.isClickable = true
             }
 
             override fun onAnimationCancel(p0: Animator?) {}

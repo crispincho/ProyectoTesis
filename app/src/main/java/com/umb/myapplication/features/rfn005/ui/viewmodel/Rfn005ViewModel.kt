@@ -73,37 +73,44 @@ class Rfn005ViewModel(application: Application, val context: Context) :
 
     private fun generateRamdonDirections() {
         round++
-        buttonsMutableList[19].value = mutableListOf((0..3).random(), 0)
+        val randomPositions = mutableListOf<Int>()
+        for (i in 0..19) {
+            randomPositions.add(i)
+        }
+        randomPositions[19] = (0..3).random()
         do {
-            buttonsMutableList[18].value = mutableListOf((0..3).random(), 0)
-        } while (buttonsMutableList[18].value!![0] == buttonsMutableList[19].value!![0])
+            randomPositions[18] = (0..3).random()
+        } while (randomPositions[18] == randomPositions[19])
         var position = 0
         var answers = 0
         do {
-            buttonsMutableList[position].value = mutableListOf((0..3).random(), 0)
-            if (position < 17 && position != 8 && answers < ROUND_ANSWERS && buttonsMutableList[position].value!![0] == buttonsMutableList[18].value!![0]) {
+            randomPositions[position] = (0..3).random()
+            if (position < 17 && position != 8 && answers < ROUND_ANSWERS && randomPositions[position] == randomPositions[18]) {
                 position++
                 answers++
-                buttonsMutableList[position].value =
-                    mutableListOf(buttonsMutableList[19].value!![0], 0)
-            } else if (answers == ROUND_ANSWERS && buttonsMutableList[position].value!![0] == buttonsMutableList[18].value!![0]) {
+                randomPositions[position] = randomPositions[19]
+            } else if (answers == ROUND_ANSWERS && randomPositions[position] == randomPositions[18]) {
                 do {
-                    buttonsMutableList[position + 1].value = mutableListOf((0..3).random(), 0)
-                } while (isRoundAnswer(position))
+                    randomPositions[position + 1] = (0..3).random()
+                } while (isRoundAnswer(randomPositions, position))
                 position++
             }
             position++
             if (position == 17 && answers < 3) {
                 position = 0
+                answers = 0
             }
         } while (position <= 17)
-
+        randomPositions.forEachIndexed { index, i ->
+            buttonsMutableList[index].value = mutableListOf(i, 0)
+        }
     }
 
-    private fun isRoundAnswer(position: Int): Boolean {
+    private fun isRoundAnswer(ramdomPosition: List<Int>, position: Int): Boolean {
         return (position < 17
-                && buttonsMutableList[position].value!![0] == buttonsMutableList[18].value!![0]
-                && buttonsMutableList[position + 1].value!![0] == buttonsMutableList[19].value!![0])
+                && ramdomPosition[position] == ramdomPosition[18]
+                && ramdomPosition[position + 1] == ramdomPosition[19]
+                && position != 8)
     }
 
     fun checkChosenOptions() {
@@ -113,13 +120,12 @@ class Rfn005ViewModel(application: Application, val context: Context) :
         if (round >= ROUNDS_NUMBER) {
             Rfn005Repository.initFirebase(context)
             if (!idUser.isNullOrEmpty()) {
-
                 Rfn005Repository.sendResults(
                     idUser!!, Rfn005Results(
-                        respuestasCorrectas = score,
-                        respuestasOmitidas = omittedAnswers,
-                        respuestasIncorrectas = wrongAnswers,
-                        tiempo = Date().time - startDate.time
+                        correctAnswers = score,
+                        omitedAnswers = omittedAnswers,
+                        wrongAnswers = wrongAnswers,
+                        time = Date().time - startDate.time
                     )
                 )
             }
@@ -131,10 +137,22 @@ class Rfn005ViewModel(application: Application, val context: Context) :
     private fun rateResponses() {
         var selectedAnswers = 0
         val actuallyScore = score
+        val randomPositions = mutableListOf<Int>()
+        buttonsMutableList.forEach {
+            randomPositions.add(it.value!![0])
+        }
         buttonsMutableList.forEachIndexed { index, mutableLiveData ->
-            if (isRoundAnswer(index) && index < 17 && buttonsMutableList[index + 1].value!![1] == 1) {
+            if (isRoundAnswer(
+                    randomPositions,
+                    index
+                ) && index < 17 && buttonsMutableList[index + 1].value!![1] == 1
+            ) {
                 score++
-            } else if (isRoundAnswer(index) && index < 17 && buttonsMutableList[index + 1].value!![1] == 0) {
+            } else if (isRoundAnswer(
+                    randomPositions,
+                    index
+                ) && index < 17 && buttonsMutableList[index + 1].value!![1] == 0
+            ) {
                 omittedAnswers++
             }
             if (mutableLiveData.value!![1] == 1)
