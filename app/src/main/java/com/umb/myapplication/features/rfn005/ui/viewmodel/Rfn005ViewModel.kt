@@ -122,10 +122,10 @@ class Rfn005ViewModel(application: Application, val context: Context) :
             if (!idUser.isNullOrEmpty()) {
                 Rfn005Repository.sendResults(
                     idUser!!, Rfn005Results(
-                        respuestasCorrectas = score,
-                        respuestasOmitidas = omittedAnswers,
-                        respuestasIncorrectas = wrongAnswers,
-                        tiempo = Date().time - startDate.time
+                        correctAnswers = score,
+                        omitedAnswers = omittedAnswers,
+                        wrongAnswers = wrongAnswers,
+                        time = Date().time - startDate.time
                     )
                 )
             }
