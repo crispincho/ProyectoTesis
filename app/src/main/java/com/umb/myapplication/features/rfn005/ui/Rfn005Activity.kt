@@ -26,6 +26,7 @@ import java.util.*
 class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
 
     lateinit var binding: ActivityRfn005Binding
+    private lateinit var timer: Timer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,7 +154,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
     }
 
     private fun activeTimer() {
-        val timer = Timer()
+        timer = Timer()
         val timerTask = object : TimerTask() {
             override fun run() {
                 GlobalScope.launch(Dispatchers.Main) {
@@ -195,6 +196,8 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
 
     /**Navigator functions**/
     override fun toNextActvity() {
+        timer.cancel()
+        timer.purge()
         val intent = Intent(this, Rfn006Activity::class.java)
         startActivity(intent)
     }
