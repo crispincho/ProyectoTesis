@@ -4,4 +4,5 @@ interface Rfn004Navigator {
 
     fun getUserID():String
     fun toNextActvity(idUser: String)
+    fun activateTest()
 }
