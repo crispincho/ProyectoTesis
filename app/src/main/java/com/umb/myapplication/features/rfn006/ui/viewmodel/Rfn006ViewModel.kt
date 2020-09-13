@@ -7,6 +7,8 @@ import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.R
+import com.umb.myapplication.features.rfn006.data.Rfn006Repository
+import com.umb.myapplication.features.rfn006.data.entities.Word
 import com.umb.myapplication.features.rfn006.ui.Rfn006Navigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -20,34 +22,11 @@ class Rfn006ViewModel(application: Application, val context: Context) :
     var navigator: Rfn006Navigator? = null
     val score = MutableLiveData<Int>()
     var idUser: String? = null
-    private lateinit var startDate: Date
+    private lateinit var startTime: Date
     private var wordsIndex = 0
-    private val startTime = Date()
 
-    private val listOfWords = listOf(
-        "Palabra1",
-        "Palabra2",
-        "Palabra3",
-        "Palabra4",
-        "Palabra5",
-        "Palabra6",
-        "Palabra7",
-        "Palabra8",
-        "Palabra9",
-        "Palabra10"
-    )
-    private val isExistWordlist = listOf(
-        true,
-        false,
-        false,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true
-    )
+    private var listOfWords: List<String>
+    private var isExistWordlist: List<Boolean>
 
     val firstText = MutableLiveData<String>()
     val showFirstText = MutableLiveData<Boolean>()
@@ -56,7 +35,18 @@ class Rfn006ViewModel(application: Application, val context: Context) :
     val threethText = MutableLiveData<String>()
     val showThreethText = MutableLiveData<Boolean>()
 
+    private val listWordResult = mutableListOf<Word>()
+
     init {
+        Rfn006Repository.initFirebase(context)
+        val words = mutableListOf<String>()
+        val answers = mutableListOf<Boolean>()
+        Rfn006Repository.getDataToTest().forEach {
+            words.add(it.key)
+            answers.add(it.value)
+        }
+        listOfWords = words
+        isExistWordlist = answers
         val mediaPlayer = MediaPlayer.create(context, R.raw.rfn006_instrucciones)
         mediaPlayer.start()
         GlobalScope.launch(Dispatchers.Main) {
@@ -64,7 +54,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
                 Thread.sleep(mediaPlayer.duration.toLong())
             }
             navigator?.activateViews()
-            startDate = Date()
+            startTime = Date()
         }
         score.value = 0
         firstText.value = listOfWords[wordsIndex++]
@@ -76,6 +66,8 @@ class Rfn006ViewModel(application: Application, val context: Context) :
     }
 
     fun selectSide(arrow: View, text: View, element: Int) {
+        if (!::startTime.isInitialized)
+            return
         val actualIndex = when (element) {
             1, 4 -> listOfWords.indexOf(firstText.value)
             2, 5 -> listOfWords.indexOf(secondText.value)
@@ -84,13 +76,21 @@ class Rfn006ViewModel(application: Application, val context: Context) :
         }
         when (element) {
             1, 2, 3 -> {
-                if (actualIndex < listOfWords.size && isExistWordlist[actualIndex])
+                if (actualIndex < listOfWords.size && isExistWordlist[actualIndex]) {
                     score.value = 1 + score.value!!
+                    listWordResult.add(Word(description = listOfWords[actualIndex], answer = true))
+                } else {
+                    listWordResult.add(Word(description = listOfWords[actualIndex], answer = false))
+                }
                 navigator?.slideView(arrow, text, false, element, ::nextWord)
             }
             4, 5, 6 -> {
-                if (actualIndex < listOfWords.size && !isExistWordlist[actualIndex])
+                if (actualIndex < listOfWords.size && !isExistWordlist[actualIndex]) {
                     score.value = 1 + score.value!!
+                    listWordResult.add(Word(description = listOfWords[actualIndex], answer = true))
+                } else {
+                    listWordResult.add(Word(description = listOfWords[actualIndex], answer = false))
+                }
                 navigator?.slideView(arrow, text, true, element - 3, ::nextWord)
             }
         }
@@ -118,6 +118,12 @@ class Rfn006ViewModel(application: Application, val context: Context) :
             }
         }
         if (showFirstText.value == false && showSecondText.value == false && showThreethText.value == false) {
+            Rfn006Repository.sendRestults(
+                idUser!!,
+                Date().time - startTime.time,
+                score.value!!,
+                listWordResult
+            )
             navigator?.goToNextTest()
         }
     }

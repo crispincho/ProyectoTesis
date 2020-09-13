@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.status_bar.view.*
 
 class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
 
-    lateinit var binding: ActivityRfn006Binding
+    private lateinit var binding: ActivityRfn006Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,6 +105,5 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
             play(comaBackText.apply { duration = 0 }).with(showArrow)
             start()
         }
-
     }
 }
