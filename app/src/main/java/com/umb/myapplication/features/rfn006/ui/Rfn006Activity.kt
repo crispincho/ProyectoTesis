@@ -3,6 +3,7 @@ package com.umb.myapplication.features.rfn006.ui
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,18 +53,13 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
     }
 
     override fun toNextActvity() {
-
+//        val intent = Intent(this, Rfn007)
+//        startActivity(intent)
     }
 
     override fun activateViews() {
         binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
         binding.statusBar.tvTime.start()
-    }
-
-    override fun goToNextTest() {
-//        val intent = Intent(this, *);
-//        startActivity(intent)
-        Toast.makeText(this, "Fin de la pruebha", Toast.LENGTH_SHORT).show()
     }
 
     /**Animations**/
