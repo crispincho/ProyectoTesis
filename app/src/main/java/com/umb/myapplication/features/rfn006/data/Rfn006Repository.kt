@@ -19,7 +19,7 @@ object Rfn006Repository {
         return getDafualtDataToTest()
     }
 
-    fun getDafualtDataToTest(): HashMap<String, Boolean> {
+    private fun getDafualtDataToTest(): HashMap<String, Boolean> {
         val defaultWords = hashMapOf<String, Boolean>()
         defaultWords["abeja"] = true
         defaultWords["tarenje"] = false
