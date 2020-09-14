@@ -22,7 +22,7 @@ class Rfn004ViewModel(application: Application, val context: Context) :
     AndroidViewModel(application) {
     var puntos = MutableLiveData<String>()
     var navigator: Rfn004Navigator?=null
-    private val songList = listOf(R.raw.rfn004_banio_panio, R.raw.rfn004_via_dia,
+    private val songList = listOf(R.raw.rfn004_via_dia,
                                 R.raw.rfn004_capa_cana, R.raw.rfn004_foto_foco, R.raw.rfn004_unia_unia,
                                 R.raw.rfn004_foca_foca, R.raw.rfn004_cania_calla, R.raw.rfn004_carro_jarro,
                                 R.raw.rfn004_caja_caja, R.raw.rfn004_paso_peso, R.raw.rfn004_misa_mesa,
@@ -45,7 +45,7 @@ class Rfn004ViewModel(application: Application, val context: Context) :
     fun playNext(button1: Button, button2: Button) {
         if (songList.size > index) {
             mediaPlayer = MediaPlayer.create(context, songList[index])
-            index += 1
+
             mediaPlayer.start()
             finalTime = mediaPlayer.duration
             startTime = mediaPlayer.currentPosition
@@ -58,10 +58,14 @@ class Rfn004ViewModel(application: Application, val context: Context) :
                 button1.isEnabled = true
                 button2.isEnabled = true
             }
-
             saveRes(button1)
+            if (songList.size == index){
+                Rfn004Repository.initFirebase(context)
+                Rfn004Repository.insertResultTestRFN004(navigator!!.getUserID(), puntos.value!!.toInt(), Date().time - dateIninitial.time)
+                navigator!!.toNextActvity(navigator!!.getUserID())
+            }
+            index += 1
         }else{
-            var dateFin =
             Rfn004Repository.initFirebase(context)
             Rfn004Repository.insertResultTestRFN004(navigator!!.getUserID(), puntos.value!!.toInt(), Date().time - dateIninitial.time)
             navigator!!.toNextActvity(navigator!!.getUserID())
