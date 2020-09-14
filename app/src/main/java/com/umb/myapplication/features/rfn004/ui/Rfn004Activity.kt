@@ -54,7 +54,7 @@ class Rfn004Activity : AppCompatActivity() , Rfn004Navigator {
 
     override fun toNextActvity(idUser: String) {
         val intent = Intent(this,Rfn005Activity::class.java )
-        intent.putExtra(idUser, idUser)
+        intent.putExtra("idUser", idUser)
         startActivity(intent)
     }
     override fun activateTest() {
