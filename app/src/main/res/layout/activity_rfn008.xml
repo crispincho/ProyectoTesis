@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/test_backgroudn"
+        tools:context=".features.rfn008.ui.Rfn008Activity">
+
+        <include
+            android:id="@+id/statusBar"
+            layout="@layout/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/key_board"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statusBar">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="@dimen/key_size"
+                android:layout_height="@dimen/key_size"
+                android:layout_marginStart="@dimen/key_margin"
+                android:layout_marginEnd="@dimen/key_margin"
+                android:layout_weight="1"
+                android:background="@drawable/ic_key_background"
+                android:gravity="center"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -123,7 +123,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
                 score.value!!,
                 listWordResult
             )
-            navigator?.goToNextTest()
+            navigator?.toNextActvity()
         }
     }
 
