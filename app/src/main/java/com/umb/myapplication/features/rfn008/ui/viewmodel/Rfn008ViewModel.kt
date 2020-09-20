@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.R
+import com.umb.myapplication.features.rfn008.data.Rfn008Repository
 import com.umb.myapplication.features.rfn008.ui.Rfn008Navigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -145,6 +146,8 @@ class Rfn008ViewModel(application: Application, val context: Context) :
         }
         if (chars >= length) {
             if (++index >= listAnswers.size) {
+                Rfn008Repository.initFirebase(context)
+                Rfn008Repository.sendData(idUser!!, Date().time - startDate.time, score.value!!)
                 navigator?.toNextActvity()
                 return
             }
@@ -173,9 +176,7 @@ class Rfn008ViewModel(application: Application, val context: Context) :
         val mediaPlayer = MediaPlayer.create(context, listAudios[index])
         mediaPlayer.start()
         GlobalScope.launch(Dispatchers.IO) {
-            withContext(Dispatchers.IO) {
-                Thread.sleep(mediaPlayer.duration.toLong())
-            }
+            Thread.sleep(mediaPlayer.duration.toLong())
             enableView = true
         }
     }
