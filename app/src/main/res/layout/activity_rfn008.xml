@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
             type="com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModel" />
@@ -31,28 +33,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
+            android:id="@+id/include"
             layout="@layout/key_board"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginLeft="64dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:layout_marginRight="64dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:viewmodel="@{viewmodel}" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/layoutBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/include"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statusBar">
 
@@ -60,79 +67,85 @@
                 android:id="@+id/textView13"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxOne}"
+                android:visibility="@{viewmodel.showBoxOne? View.VISIBLE:View.GONE}"
+                tools:text="B" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxTwo}"
+                android:visibility="@{viewmodel.showBoxTwo? View.VISIBLE:View.GONE}"
+                tools:text="C" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxThree}"
+                android:visibility="@{viewmodel.showBoxThree? View.VISIBLE:View.GONE}"
+                tools:text="D" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxFour}"
+                android:visibility="@{viewmodel.showBoxFour? View.VISIBLE:View.GONE}"
+                tools:text="F" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxFive}"
+                android:visibility="@{viewmodel.showBoxFive? View.VISIBLE:View.GONE}"
+                tools:text="G" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@{viewmodel.textBoxSix}"
+                android:visibility="@{viewmodel.showBoxSix? View.VISIBLE:View.GONE}"
+                tools:text="H" />
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="@dimen/key_size"
                 android:layout_height="@dimen/key_size"
-                android:layout_marginStart="@dimen/key_margin"
                 android:layout_marginEnd="@dimen/key_margin"
-                android:layout_weight="1"
+                android:layout_marginRight="@dimen/key_margin"
                 android:background="@drawable/ic_key_background"
                 android:gravity="center"
-                android:text="TextView" />
-
+                android:text="@{viewmodel.textBoxSeven}"
+                android:visibility="@{viewmodel.showBoxSeven? View.VISIBLE:View.GONE}"
+                tools:text="J" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

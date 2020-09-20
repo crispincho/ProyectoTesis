@@ -1,9 +1,13 @@
 package com.umb.myapplication.features.rfn008.ui
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,14 +44,65 @@ class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
         }
-
     }
 
     override fun toNextActvity() {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"Fin de la prueba",Toast.LENGTH_LONG).show()
     }
 
     override fun activateViews() {
+        binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
+        binding.statusBar.tvTime.start()
+    }
 
+    /**Animations**/
+    override fun changeNumberBoxes(number: Int) {
+        val fadedBox = ObjectAnimator.ofFloat(binding.layoutBox, "alpha", 1f, 0f)
+        fadedBox.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(p0: Animator?) {}
+            override fun onAnimationEnd(p0: Animator?) {
+                binding.viewmodel?.cleanBoxes()
+                binding.viewmodel?.showBoxOne?.value = false
+                binding.viewmodel?.showBoxTwo?.value = false
+                binding.viewmodel?.showBoxThree?.value = false
+                binding.viewmodel?.showBoxFour?.value = false
+                binding.viewmodel?.showBoxFive?.value = false
+                binding.viewmodel?.showBoxSix?.value = false
+                binding.viewmodel?.showBoxSeven?.value = false
+                if (number >= 1) {
+                    binding.viewmodel?.showBoxOne?.value = true
+                }
+                if (number >= 2) {
+                    binding.viewmodel?.showBoxTwo?.value = true
+                }
+                if (number >= 3) {
+                    binding.viewmodel?.showBoxThree?.value = true
+                }
+                if (number >= 4) {
+                    binding.viewmodel?.showBoxFour?.value = true
+                }
+                if (number >= 5) {
+                    binding.viewmodel?.showBoxFive?.value = true
+                }
+                if (number >= 6) {
+                    binding.viewmodel?.showBoxSix?.value = true
+                }
+                if (number >= 7) {
+                    binding.viewmodel?.showBoxSeven?.value = true
+                }
+                val showBox = ObjectAnimator.ofFloat(binding.layoutBox, "alpha", 0f, 1f)
+                showBox.apply {
+                    duration = 500
+                    start()
+                }
+            }
+
+            override fun onAnimationCancel(p0: Animator?) {}
+            override fun onAnimationStart(p0: Animator?) {}
+        })
+        fadedBox.apply {
+            duration = 500
+            start()
+        }
     }
 }

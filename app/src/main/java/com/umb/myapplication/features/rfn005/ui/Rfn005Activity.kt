@@ -199,6 +199,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         timer.cancel()
         timer.purge()
         val intent = Intent(this, Rfn006Activity::class.java)
+        intent.putExtra("idUser", binding.viewmodel!!.idUser!!)
         startActivity(intent)
     }
 

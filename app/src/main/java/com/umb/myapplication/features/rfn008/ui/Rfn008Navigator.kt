@@ -6,4 +6,6 @@ interface Rfn008Navigator {
 
     fun activateViews()
 
+    fun changeNumberBoxes(number: Int)
+
 }

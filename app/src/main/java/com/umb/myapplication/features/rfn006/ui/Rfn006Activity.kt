@@ -52,6 +52,7 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
 
     override fun toNextActvity() {
 //        val intent = Intent(this, Rfn007)
+//        intent.putExtra("idUser",binding.viewmodel!!.idUser!!)
 //        startActivity(intent)
     }
 
