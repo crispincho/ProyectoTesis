@@ -35,6 +35,7 @@ class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
         })
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = this
+        activateViews()
     }
 
     @Suppress("DEPRECATION")
