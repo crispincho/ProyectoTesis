@@ -18,6 +18,7 @@ import com.umb.myapplication.databinding.ActivityRfn008Binding
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModel
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModelFactory
 import kotlinx.android.synthetic.main.status_bar.view.*
+import java.util.*
 
 class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
 
@@ -59,6 +60,7 @@ class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
                     binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
                     binding.statusBar.tvTime.start()
                     binding.viewmodel?.validateSerie()
+                    binding.viewmodel?.startDate = Date()
                 }
             })
         dialog.show()

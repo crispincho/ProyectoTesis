@@ -13,6 +13,8 @@ import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.umb.myapplication.R
+import com.umb.myapplication.core.utils.DialogInstructions
+import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn005Binding
 import com.umb.myapplication.features.rfn005.ui.viewmodel.Rfn005ViewModel
 import com.umb.myapplication.features.rfn005.ui.viewmodel.Rfn005ViewModelFactory
@@ -45,6 +47,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.statusBar.tvTestDescription.isSelected = true
+        activateViews()
     }
 
     @Suppress("DEPRECATION")
@@ -203,11 +206,21 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         startActivity(intent)
     }
 
-    override fun activateViews() {
-        assignObserversButtons()
-        assignClickListenerButtons()
-        activeTimer()
-        binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
-        binding.statusBar.tvTime.start()
+    private fun activateViews() {
+        val dialog = DialogInstructions(
+            this,
+            getString(R.string.test_rfn005_instructions),
+            R.raw.rfn005_instrucciones,
+            object : DialogInstructionsListener {
+                override fun dismmissDialog() {
+                    assignObserversButtons()
+                    assignClickListenerButtons()
+                    activeTimer()
+                    binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
+                    binding.statusBar.tvTime.start()
+                    binding.viewmodel?.startDate = Date()
+                }
+            })
+        dialog.show()
     }
 }

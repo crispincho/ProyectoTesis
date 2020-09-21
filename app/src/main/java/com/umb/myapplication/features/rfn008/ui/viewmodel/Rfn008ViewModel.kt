@@ -11,7 +11,6 @@ import com.umb.myapplication.features.rfn008.ui.Rfn008Navigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.*
 
 class Rfn008ViewModel(application: Application, val context: Context) :
@@ -38,7 +37,7 @@ class Rfn008ViewModel(application: Application, val context: Context) :
 
     var score = MutableLiveData<Int>()
 
-    private lateinit var startDate: Date
+    lateinit var startDate: Date
 
     private val listAnswers = listOf(
         "nb",
@@ -73,16 +72,6 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private var enableView = false
 
     init {
-//        val mediaPlayer = MediaPlayer.create(context, R.raw.rfn008_instrucciones)
-//        mediaPlayer.start()
-//        GlobalScope.launch(Dispatchers.Main) {
-//            withContext(Dispatchers.IO) {
-//                Thread.sleep(mediaPlayer.duration.toLong())
-//            }
-//            navigator?.activateViews()
-//            startDate = Date()
-//            validateSerie()
-//        }
         showBoxOne.value = true
         showBoxTwo.value = true
         showBoxThree.value = true

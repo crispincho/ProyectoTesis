@@ -1,8 +1,10 @@
 package com.umb.myapplication.features.formulario.ui
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.umb.myapplication.R
@@ -23,6 +25,17 @@ class FormularioActivity : AppCompatActivity(), FormularioNavigator {
         viewmodel.navigator = this
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = this
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onResume() {
+        super.onResume()
+        window.decorView.apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN
+            }
+        }
     }
 
     override fun toNextActvity(idUser: String) {

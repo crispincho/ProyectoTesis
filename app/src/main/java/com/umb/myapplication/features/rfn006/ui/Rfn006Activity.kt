@@ -12,10 +12,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.umb.myapplication.R
+import com.umb.myapplication.core.utils.DialogInstructions
+import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn006Binding
 import com.umb.myapplication.features.rfn006.ui.viewmodel.Rfn006ViewModel
 import com.umb.myapplication.features.rfn006.ui.viewmodel.Rfn006ViewModelFactory
 import kotlinx.android.synthetic.main.status_bar.view.*
+import java.util.*
 
 class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
 
@@ -36,6 +39,7 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
         })
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = this
+        activateViews()
     }
 
     @Suppress("DEPRECATION")
@@ -56,9 +60,19 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
 //        startActivity(intent)
     }
 
-    override fun activateViews() {
-        binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
-        binding.statusBar.tvTime.start()
+    private fun activateViews() {
+        val dialog = DialogInstructions(
+            this,
+            getString(R.string.test_rfn008_instructions),
+            R.raw.rfn006_instrucciones,
+            object : DialogInstructionsListener {
+                override fun dismmissDialog() {
+                    binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
+                    binding.statusBar.tvTime.start()
+                    binding.viewmodel?.startTime = Date()
+                }
+            })
+        dialog.show()
     }
 
     /**Animations**/

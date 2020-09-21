@@ -21,7 +21,7 @@ class Rfn006ViewModel(application: Application, val context: Context) :
     var navigator: Rfn006Navigator? = null
     val score = MutableLiveData<Int>()
     var idUser: String? = null
-    private lateinit var startTime: Date
+    lateinit var startTime: Date
     private var wordsIndex = 0
 
     private var listOfWords: List<String>
@@ -46,15 +46,6 @@ class Rfn006ViewModel(application: Application, val context: Context) :
         }
         listOfWords = words
         isExistWordlist = answers
-        val mediaPlayer = MediaPlayer.create(context, R.raw.rfn006_instrucciones)
-        mediaPlayer.start()
-        GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                Thread.sleep(mediaPlayer.duration.toLong())
-            }
-            navigator?.activateViews()
-            startTime = Date()
-        }
         score.value = 0
         firstText.value = listOfWords[wordsIndex++]
         secondText.value = listOfWords[wordsIndex++]

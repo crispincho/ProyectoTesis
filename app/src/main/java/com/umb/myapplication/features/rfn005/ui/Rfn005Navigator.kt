@@ -4,6 +4,4 @@ interface Rfn005Navigator {
 
     fun toNextActvity()
 
-    fun activateViews()
-
 }

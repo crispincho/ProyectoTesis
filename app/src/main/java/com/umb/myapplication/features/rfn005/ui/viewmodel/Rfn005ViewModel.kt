@@ -2,17 +2,11 @@ package com.umb.myapplication.features.rfn005.ui.viewmodel
 
 import android.app.Application
 import android.content.Context
-import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.umb.myapplication.R
 import com.umb.myapplication.features.rfn005.data.Rfn005Repository
 import com.umb.myapplication.features.rfn005.data.entities.Rfn005Results
 import com.umb.myapplication.features.rfn005.ui.Rfn005Navigator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.*
 
 class Rfn005ViewModel(application: Application, val context: Context) :
@@ -27,25 +21,13 @@ class Rfn005ViewModel(application: Application, val context: Context) :
 
     var idUser: String? = null
 
-    private lateinit var startDate: Date
+    lateinit var startDate: Date
 
     private var score = 0
     private var wrongAnswers = 0
     private var omittedAnswers = 0
 
     val points = MutableLiveData<Int>()
-
-    init {
-        val mediaPlayer = MediaPlayer.create(context, R.raw.rfn005_instrucciones)
-        mediaPlayer.start()
-        GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                Thread.sleep(mediaPlayer.duration.toLong())
-            }
-            navigator?.activateViews()
-            startDate = Date()
-        }
-    }
 
     //Equivalencias direcciones arriba = 0 , derecha = 1 , izquierda = 2 , abajo = 3
     val buttonsMutableList = listOf<MutableLiveData<MutableList<Int>>>(
