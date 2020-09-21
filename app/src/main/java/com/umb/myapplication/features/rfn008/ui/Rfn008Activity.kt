@@ -47,13 +47,12 @@ class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
         }
-        activateViews()
     }
 
-    fun activateViews() {
+    private fun activateViews() {
         val dialog = DialogInstructions(
             this,
-            "instrucciones probicionales",
+            getString(R.string.test_rfn008_instructions),
             R.raw.rfn008_instrucciones,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {

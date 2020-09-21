@@ -30,13 +30,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:background="@drawable/buttons_background"
+        android:background="@drawable/text_baloon"
         android:gravity="center"
         android:padding="24dp"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/animationRobot"
         app:layout_constraintEnd_toStartOf="@+id/animationRobot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/animationRobot"
-        tools:text="@string/test_one_instructions" />
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="@string/test_rfn004_instructions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
