@@ -4,8 +4,6 @@ interface Rfn008Navigator {
 
     fun toNextActvity()
 
-    fun activateViews()
-
     fun changeNumberBoxes(number: Int)
 
 }

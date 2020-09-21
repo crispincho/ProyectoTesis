@@ -73,16 +73,16 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private var enableView = false
 
     init {
-        val mediaPlayer = MediaPlayer.create(context, R.raw.rfn008_instrucciones)
-        mediaPlayer.start()
-        GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                Thread.sleep(mediaPlayer.duration.toLong())
-            }
-            navigator?.activateViews()
-            startDate = Date()
-            validateSerie()
-        }
+//        val mediaPlayer = MediaPlayer.create(context, R.raw.rfn008_instrucciones)
+//        mediaPlayer.start()
+//        GlobalScope.launch(Dispatchers.Main) {
+//            withContext(Dispatchers.IO) {
+//                Thread.sleep(mediaPlayer.duration.toLong())
+//            }
+//            navigator?.activateViews()
+//            startDate = Date()
+//            validateSerie()
+//        }
         showBoxOne.value = true
         showBoxTwo.value = true
         showBoxThree.value = true
@@ -133,7 +133,7 @@ class Rfn008ViewModel(application: Application, val context: Context) :
         textBoxSeven.value = ""
     }
 
-    private fun validateSerie() {
+    fun validateSerie() {
         val chars = when {
             textBoxOne.value.isNullOrEmpty() -> 0
             textBoxTwo.value.isNullOrEmpty() -> 1

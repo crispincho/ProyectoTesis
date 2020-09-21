@@ -12,6 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.umb.myapplication.R
+import com.umb.myapplication.core.utils.DialogInstructions
+import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn008Binding
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModel
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModelFactory
@@ -44,15 +46,26 @@ class Rfn008Activity : AppCompatActivity(), Rfn008Navigator {
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             }
         }
+        activateViews()
+    }
+
+    fun activateViews() {
+        val dialog = DialogInstructions(
+            this,
+            "instrucciones probicionales",
+            R.raw.rfn008_instrucciones,
+            object : DialogInstructionsListener {
+                override fun dismmissDialog() {
+                    binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
+                    binding.statusBar.tvTime.start()
+                    binding.viewmodel?.validateSerie()
+                }
+            })
+        dialog.show()
     }
 
     override fun toNextActvity() {
-        Toast.makeText(this,"Fin de la prueba",Toast.LENGTH_LONG).show()
-    }
-
-    override fun activateViews() {
-        binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
-        binding.statusBar.tvTime.start()
+        Toast.makeText(this, "Fin de la prueba", Toast.LENGTH_LONG).show()
     }
 
     /**Animations**/
