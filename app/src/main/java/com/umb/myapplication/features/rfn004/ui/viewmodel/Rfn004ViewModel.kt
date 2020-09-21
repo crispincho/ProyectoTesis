@@ -32,13 +32,13 @@ class Rfn004ViewModel(application: Application, val context: Context) :
     private val resCorrect = listOf(false, false, false, false,true,true,false,false,true,false,false,true,true,true,true,false,false,true,false)
     private var resUser: MutableList<Boolean> = mutableListOf()
     private var index: Int = 0
-    private var mediaPlayer: MediaPlayer = MediaPlayer.create(context, R.raw.rfn004_ejemplo_instructivo)
+    private var mediaPlayer: MediaPlayer = MediaPlayer.create(context, R.raw.rfn004_banio_panio)
     private var startTime: Int = 0
     private var finalTime: Int = 0
     private var dateIninitial:Date = Date()
 
     init {
-        playInitSound()
+
         puntos.value="0"
     }
 
