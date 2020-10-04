@@ -5,12 +5,13 @@ import android.content.Context
 import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.umb.myapplication.R
 import com.umb.myapplication.features.rfn008.data.Rfn008Repository
 import com.umb.myapplication.features.rfn008.ui.Rfn008Navigator
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 import java.util.*
 
 class Rfn008ViewModel(application: Application, val context: Context) :
@@ -72,6 +73,7 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private var enableView = false
 
     init {
+        score.value = 0
         showBoxOne.value = true
         showBoxTwo.value = true
         showBoxThree.value = true
@@ -134,13 +136,13 @@ class Rfn008ViewModel(application: Application, val context: Context) :
             else -> 7
         }
         if (chars >= length) {
+            scoreSerie()
             if (++index >= listAnswers.size) {
                 Rfn008Repository.initFirebase(context)
                 Rfn008Repository.sendData(idUser!!, Date().time - startDate.time, score.value!!)
                 navigator?.toNextActvity()
                 return
             }
-            scoreSerie()
             length = 0
             var starSpecialChar = false
             listAnswers[index].forEach {
@@ -164,13 +166,35 @@ class Rfn008ViewModel(application: Application, val context: Context) :
         enableView = false
         val mediaPlayer = MediaPlayer.create(context, listAudios[index])
         mediaPlayer.start()
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             Thread.sleep(mediaPlayer.duration.toLong())
             enableView = true
         }
     }
 
     private fun scoreSerie() {
+        val serie = StringBuilder()
+        serie.append(getValue(textBoxOne.value))
+        serie.append(getValue(textBoxTwo.value))
+        serie.append(getValue(textBoxThree.value))
+        serie.append(getValue(textBoxFour.value))
+        serie.append(getValue(textBoxFive.value))
+        serie.append(getValue(textBoxSix.value))
+        serie.append(getValue(textBoxSeven.value))
+        if (index >= 0 && serie.toString().equals(listAnswers[index], ignoreCase = true))
+            score.value = score.value!! + 1
+    }
+
+    private fun getValue(char: String?): String {
+        return if (!char.isNullOrEmpty()) {
+            if (char == "LL") {
+                "|LL|"
+            } else {
+                char
+            }
+        } else {
+            ""
+        }
     }
 
 }
