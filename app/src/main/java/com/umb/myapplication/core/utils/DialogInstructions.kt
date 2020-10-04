@@ -28,7 +28,7 @@ class DialogInstructions(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window?.setBackgroundDrawable(ColorDrawable(Color.argb(204,102,102,102)))
+        window?.setBackgroundDrawable(ColorDrawable(Color.argb(204, 102, 102, 102)))
         setContentView(R.layout.dialog_instructions)
 
         val tvInstructions = findViewById<TextView>(R.id.instructions)
@@ -49,8 +49,6 @@ class DialogInstructions(
         dismissDialog()
     }
 
-
-
     private fun dismissDialog() {
         val mediaPlayer = MediaPlayer.create(context, instructionAudio)
         mediaPlayer.start()
@@ -60,6 +58,7 @@ class DialogInstructions(
             }
             listener.dismmissDialog()
             this@DialogInstructions.dismiss()
+            mediaPlayer.release()
         }
     }
 

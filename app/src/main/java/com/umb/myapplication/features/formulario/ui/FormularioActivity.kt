@@ -1,6 +1,7 @@
 package com.umb.myapplication.features.formulario.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,7 @@ class FormularioActivity : AppCompatActivity(), FormularioNavigator {
         viewmodel.navigator = this
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = this
+        toNextActvity("")
     }
 
     @Suppress("DEPRECATION")
@@ -39,8 +41,10 @@ class FormularioActivity : AppCompatActivity(), FormularioNavigator {
     }
 
     override fun toNextActvity(idUser: String) {
-        val intent = Intent(this, Rfn004Activity::class.java)
-        intent.putExtra("idUser", idUser)
-        startActivity(intent)
+        val mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.rfn005_instrucciones)
+        mediaPlayer?.start()
+//        val intent = Intent(this, Rfn004Activity::class.java)
+//        intent.putExtra("idUser", idUser)
+//        startActivity(intent)
     }
 }

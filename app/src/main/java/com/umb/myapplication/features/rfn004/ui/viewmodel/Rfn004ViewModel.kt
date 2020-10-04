@@ -4,16 +4,14 @@ package com.umb.myapplication.features.rfn004.ui.viewmodel
 import android.app.Application
 import android.content.Context
 import android.media.MediaPlayer
-import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.umb.myapplication.R
 import com.umb.myapplication.features.rfn004.data.Rfn004Repository
 import com.umb.myapplication.features.rfn004.ui.Rfn004Navigator
-import kotlinx.android.synthetic.main.activity_rfn004.view.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -49,12 +47,9 @@ class Rfn004ViewModel(application: Application, val context: Context) :
             mediaPlayer.start()
             finalTime = mediaPlayer.duration
             startTime = mediaPlayer.currentPosition
-            GlobalScope.launch(Dispatchers.Main) {
-                button1.isEnabled = false
-                button2.isEnabled = false
-                withContext(Dispatchers.IO) {
-                    Thread.sleep(finalTime.toLong())
-                }
+            button1.isEnabled = false
+            button2.isEnabled = false
+            mediaPlayer.setOnCompletionListener {
                 button1.isEnabled = true
                 button2.isEnabled = true
             }
@@ -93,7 +88,7 @@ class Rfn004ViewModel(application: Application, val context: Context) :
 
     fun playInitSound(){
         val thread =Thread(Runnable {
-            GlobalScope.launch (Dispatchers.Main) {
+            viewModelScope.launch (Dispatchers.Main) {
                 mediaPlayer.start()
                 finalTime = mediaPlayer.duration
                 startTime = mediaPlayer.currentPosition

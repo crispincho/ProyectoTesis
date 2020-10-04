@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.umb.myapplication.R
 import com.umb.myapplication.core.utils.DialogInstructions
 import com.umb.myapplication.core.utils.DialogInstructionsListener
@@ -21,7 +22,6 @@ import com.umb.myapplication.features.rfn005.ui.viewmodel.Rfn005ViewModelFactory
 import com.umb.myapplication.features.rfn006.ui.Rfn006Activity
 import kotlinx.android.synthetic.main.status_bar.view.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -160,7 +160,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         timer = Timer()
         val timerTask = object : TimerTask() {
             override fun run() {
-                GlobalScope.launch(Dispatchers.Main) {
+                lifecycleScope.launch(Dispatchers.Main) {
                     binding.viewmodel?.checkChosenOptions()
                 }
             }

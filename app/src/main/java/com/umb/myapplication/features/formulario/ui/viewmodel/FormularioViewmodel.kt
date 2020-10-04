@@ -29,29 +29,29 @@ class FormularioViewmodel(application: Application, val context: Context) :
     val isVisibleRelationship = MutableLiveData<Boolean>()
 
     fun toFirstTest() {
-        FormularioRepository.initFirebase(context)
-        isVisibleName.value = nombre.value.isNullOrEmpty()
-        isVisibleAge.value = edad.value.isNullOrEmpty()
-        isVisibleEmail.value = correo.value.isNullOrEmpty()
-        isVisibleCourse.value = grado.value.isNullOrEmpty()
-        isVisibleTelephone.value = telefono.value.isNullOrEmpty()
-        isVisibleGuardian.value = codigoGuardian.value.isNullOrEmpty()
-        isVisibleRelationship.value = parentesco.value.isNullOrEmpty()
-        if (!nombre.value.isNullOrEmpty() && !edad.value.isNullOrEmpty() && !correo.value.isNullOrEmpty() && !grado.value.isNullOrEmpty() && !telefono.value.isNullOrEmpty() && !codigoGuardian.value.isNullOrEmpty() && !parentesco.value.isNullOrEmpty()) {
-            val user = User(
-                name = nombre.value!!,
-                age = edad.value!!.toInt(),
-                email = correo.value!!,
-                course = grado.value!!,
-                telephone = telefono.value!!,
-                guardianName = codigoGuardian.value!!,
-                relationship = parentesco.value!!
-            )
-            FormularioRepository.insertUser(user)
+//        FormularioRepository.initFirebase(context)
+//        isVisibleName.value = nombre.value.isNullOrEmpty()
+//        isVisibleAge.value = edad.value.isNullOrEmpty()
+//        isVisibleEmail.value = correo.value.isNullOrEmpty()
+//        isVisibleCourse.value = grado.value.isNullOrEmpty()
+//        isVisibleTelephone.value = telefono.value.isNullOrEmpty()
+//        isVisibleGuardian.value = codigoGuardian.value.isNullOrEmpty()
+//        isVisibleRelationship.value = parentesco.value.isNullOrEmpty()
+//        if (!nombre.value.isNullOrEmpty() && !edad.value.isNullOrEmpty() && !correo.value.isNullOrEmpty() && !grado.value.isNullOrEmpty() && !telefono.value.isNullOrEmpty() && !codigoGuardian.value.isNullOrEmpty() && !parentesco.value.isNullOrEmpty()) {
+//            val user = User(
+//                name = nombre.value!!,
+//                age = edad.value!!.toInt(),
+//                email = correo.value!!,
+//                course = grado.value!!,
+//                telephone = telefono.value!!,
+//                guardianName = codigoGuardian.value!!,
+//                relationship = parentesco.value!!
+//            )
+//            FormularioRepository.insertUser(user)
+//
 
-
-            navigator?.toNextActvity(idUser = user.id)
-        }
+            navigator?.toNextActvity(idUser = 132.toString())
+//        }
 
 
     }

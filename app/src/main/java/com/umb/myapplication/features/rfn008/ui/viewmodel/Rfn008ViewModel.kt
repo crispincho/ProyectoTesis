@@ -5,12 +5,9 @@ import android.content.Context
 import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.umb.myapplication.R
 import com.umb.myapplication.features.rfn008.data.Rfn008Repository
 import com.umb.myapplication.features.rfn008.ui.Rfn008Navigator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 import java.util.*
 
@@ -165,11 +162,8 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private fun playAudio() {
         enableView = false
         val mediaPlayer = MediaPlayer.create(context, listAudios[index])
+        mediaPlayer.setOnCompletionListener { enableView = true }
         mediaPlayer.start()
-        viewModelScope.launch(Dispatchers.IO) {
-            Thread.sleep(mediaPlayer.duration.toLong())
-            enableView = true
-        }
     }
 
     private fun scoreSerie() {
@@ -188,7 +182,7 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private fun getValue(char: String?): String {
         return if (!char.isNullOrEmpty()) {
             if (char == "LL") {
-                "|LL|"
+                "|$char|"
             } else {
                 char
             }
