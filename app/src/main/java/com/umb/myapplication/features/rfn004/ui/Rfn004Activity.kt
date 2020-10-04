@@ -15,6 +15,8 @@ import com.umb.myapplication.features.rfn004.ui.viewmodel.Rfn004ViewmodelFactory
 import com.umb.myapplication.features.rfn005.ui.Rfn005Activity
 import kotlinx.android.synthetic.main.status_bar.view.*
 import androidx.lifecycle.Observer
+import com.umb.myapplication.core.utils.DialogInstructions
+import com.umb.myapplication.core.utils.DialogInstructionsListener
 
 class Rfn004Activity : AppCompatActivity() , Rfn004Navigator {
     lateinit var binding: ActivityRfn004Binding
@@ -35,6 +37,8 @@ class Rfn004Activity : AppCompatActivity() , Rfn004Navigator {
             systemUiVisibility=View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY  or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
         }
+
+        activateViews()
 
     }
     @Suppress("DEPRECATION")
@@ -62,5 +66,18 @@ class Rfn004Activity : AppCompatActivity() , Rfn004Navigator {
         binding.buttonEquals.isEnabled=true
         binding.statusBar.tvTime.base= SystemClock.elapsedRealtime()
         binding.statusBar.tvTime.start()
+    }
+
+    fun activateViews() {
+        val dialog = DialogInstructions(
+            this,
+            getString(R.string.test_rfn004_instructions),
+            R.raw.rfn004_instructivo,
+            object : DialogInstructionsListener {
+                override fun dismmissDialog() {
+                    binding.viewmodel?.playInitSound()
+                }
+            })
+        dialog.show()
     }
 }
