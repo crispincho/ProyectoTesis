@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".features.rfn009.ui.Rfn009Activity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
             android:name=".features.rfn008.ui.Rfn008Activity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
