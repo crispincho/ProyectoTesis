@@ -3,8 +3,8 @@ package com.umb.myapplication.features.rfn006.ui
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
@@ -12,15 +12,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.umb.myapplication.R
+import com.umb.myapplication.core.ui.GameActivity
 import com.umb.myapplication.core.utils.DialogInstructions
 import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn006Binding
 import com.umb.myapplication.features.rfn006.ui.viewmodel.Rfn006ViewModel
 import com.umb.myapplication.features.rfn006.ui.viewmodel.Rfn006ViewModelFactory
+import com.umb.myapplication.features.rfn007.ui.Rfn007Activity
 import kotlinx.android.synthetic.main.status_bar.view.*
 import java.util.*
 
-class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
+class Rfn006Activity : GameActivity(), Rfn006Navigator {
 
     private lateinit var binding: ActivityRfn006Binding
 
@@ -33,7 +35,7 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
         val factory = Rfn006ViewModelFactory(application, this)
         val viewmodel = ViewModelProvider(this, factory).get(Rfn006ViewModel::class.java)
         viewmodel.navigator = this
-        viewmodel.idUser = intent.getStringExtra("idUser")
+        viewmodel.idUser = intent.getStringExtra(ID_USER)
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()
         })
@@ -55,9 +57,9 @@ class Rfn006Activity : AppCompatActivity(), Rfn006Navigator {
     }
 
     override fun toNextActvity() {
-//        val intent = Intent(this, Rfn007)
-//        intent.putExtra("idUser",binding.viewmodel!!.idUser!!)
-//        startActivity(intent)
+        val intent = Intent(this, Rfn007Activity::class.java)
+        intent.putExtra(ID_USER, binding.viewmodel!!.idUser!!)
+        startActivity(intent)
     }
 
     private fun activateViews() {

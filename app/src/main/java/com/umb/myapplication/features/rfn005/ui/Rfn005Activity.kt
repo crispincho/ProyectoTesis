@@ -2,8 +2,6 @@ package com.umb.myapplication.features.rfn005.ui
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
@@ -14,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.umb.myapplication.R
+import com.umb.myapplication.core.ui.GameActivity
 import com.umb.myapplication.core.utils.DialogInstructions
 import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn005Binding
@@ -25,7 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
+class Rfn005Activity : GameActivity(), Rfn005Navigator {
 
     lateinit var binding: ActivityRfn005Binding
     private lateinit var timer: Timer
@@ -43,22 +42,11 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
             binding.statusBar.tvPoints.text = it.toString()
         })
         viewModel.navigator = this
-        viewModel.idUser = intent.getStringExtra("idUser")
+        viewModel.idUser = intent.getStringExtra(ID_USER)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.statusBar.tvTestDescription.isSelected = true
         activateViews()
-    }
-
-    @Suppress("DEPRECATION")
-    override fun onResume() {
-        super.onResume()
-        window.decorView.apply {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                systemUiVisibility =
-                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-            }
-        }
     }
 
     private fun assignObserversButtons() {
@@ -202,7 +190,7 @@ class Rfn005Activity : AppCompatActivity(), Rfn005Navigator {
         timer.cancel()
         timer.purge()
         val intent = Intent(this, Rfn006Activity::class.java)
-        intent.putExtra("idUser", binding.viewmodel!!.idUser!!)
+        intent.putExtra(ID_USER, binding.viewmodel!!.idUser!!)
         startActivity(intent)
     }
 

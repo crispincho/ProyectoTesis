@@ -49,4 +49,5 @@
     <string name="test_rfn007_instructions">Te voy a decir algunas palabras y tendrás que repetirlas después de mí, algunas son reales y otras son inventadas, debes repetirlas todas sin hacer comentarios. No olvides mantener presionado el botón, mientras repites la palabra.</string>
     <string name="test_rfn008_instructions">Te voy a decir unas letras y cuando acabe quiero que las busques en el teclado y las oprimas en el mismo orden que yo te las dije</string>
     <string name="escribe_correctamente">Escribir Correctamente</string>
+    <string name="recod_audio_permission_denied">Este permiso es necesario para le ejecucion correcta de la aplicación</string>
 </resources>
