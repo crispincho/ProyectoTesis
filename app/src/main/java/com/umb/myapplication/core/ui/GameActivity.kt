@@ -12,7 +12,7 @@ open class GameActivity : AppCompatActivity() {
 
     protected val ID_USER = "idUser"
 
-    private val REQUEST_RECORD_AUDIO = 1001
+    protected val REQUEST_RECORD_AUDIO = 1001
 
     @Suppress("DEPRECATION")
     override fun onResume() {
@@ -29,7 +29,7 @@ open class GameActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun validatePermission() {
+    open fun validatePermission() {
         if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.RECORD_AUDIO)) {
                 Toast.makeText(
