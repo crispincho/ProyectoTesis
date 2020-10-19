@@ -71,8 +71,8 @@ class FormularioViewmodel(application: Application, val context: Context) :
             telephone = telefono.value!!,
             guardianName = codigoGuardian.value!!,
         )
-        FormularioRepository.insertUser(user, guardian.code!!, guardian.sampleGroup!!.code)
-        navigator?.toNextActvity(user.id, guardian.code, guardian.sampleGroup.code)
+        FormularioRepository.insertUser(user, guardian.code!!, guardian.sampleGroup!!.code!!)
+        navigator?.toNextActvity(user.id, guardian.code, guardian.sampleGroup.code!!)
     }
 
     private fun validateName(name: String?): String {
