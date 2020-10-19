@@ -10,9 +10,12 @@ import com.umb.myapplication.R
 
 open class GameActivity : AppCompatActivity() {
 
-    protected val ID_USER = "idUser"
-
-    protected val REQUEST_RECORD_AUDIO = 1001
+    companion object {
+        const val ID_USER = "idUser"
+        const val GUARDIAN_CODE = "guardianCode"
+        const val CODE = "code"
+        const val REQUEST_RECORD_AUDIO = 1001
+    }
 
     @Suppress("DEPRECATION")
     override fun onResume() {

@@ -3,12 +3,12 @@
     <string name="nombre">Nombre</string>
     <string name="edad">Edad</string>
     <string name="correo">Correo</string>
-    <string name="curso">Curso</string>
+    <string name="grado_escolar">Grado escolar</string>
     <string name="telefono">Telefono</string>
     <string name="nombre_acudiente">Codigo guardian</string>
     <string name="parentesco">Parentesco</string>
     <string name="siguiente">SIGUIENTE</string>
-    <string name="requerido">Esta campo es requerido</string>
+    <string name="requerido">Este campo es requerido</string>
     <string name="iguales">IGUALES</string>
     <string name="diferentes">DIFERENTES</string>
     <string name="status_time">Tiempo de la prueba</string>
@@ -16,7 +16,7 @@
     <string name="test_description">Descripcion de la pruba</string>
     <string name="button_opcion">Opcion de respuesta</string>
     <string name="button_reply">respuesta boton</string>
-    <string name="exist">Existe</string>
+    <string name="exist">Celular</string>
     <string name="not_exist">No existe</string>
     <string name="arrowLeftButton">left button</string>
     <string name="arrowRigthButton">Rigth button</string>
@@ -50,4 +50,10 @@
     <string name="test_rfn008_instructions">Te voy a decir unas letras y cuando acabe quiero que las busques en el teclado y las oprimas en el mismo orden que yo te las dije</string>
     <string name="escribe_correctamente">Escribir Correctamente</string>
     <string name="recod_audio_permission_denied">Este permiso es necesario para le ejecucion correcta de la aplicación</string>
+    <string name="edad_invalida">Por favor introduzca una edad valida</string>
+    <string name="nombre_invalido">El nombre es invalido</string>
+    <string name="edad_fuera_rango">La edad requerida para usar la aplicación es de 6 a 9 años</string>
+    <string name="correo_invalido">El correo ingresado es inválido</string>
+    <string name="celular_invalido">El numero de celular es invalido</string>
+    <string name="codigo_guardian_invalido">El código de guardián ingresado es inválido</string>
 </resources>

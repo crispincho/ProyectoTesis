@@ -45,12 +45,12 @@ class Rfn004Activity : GameActivity(), Rfn004Navigator {
     }
 
     override fun getUserID(): String {
-        return intent.getStringExtra(ID_USER)!!
+        return intent.getStringExtra(Companion.ID_USER)!!
     }
 
     override fun toNextActvity(idUser: String) {
         val intent = Intent(this, Rfn005Activity::class.java)
-        intent.putExtra(ID_USER, idUser)
+        intent.putExtra(Companion.ID_USER, idUser)
         startActivity(intent)
     }
 

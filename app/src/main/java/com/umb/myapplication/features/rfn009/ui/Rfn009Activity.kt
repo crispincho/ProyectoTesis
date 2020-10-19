@@ -20,7 +20,7 @@ class Rfn009Activity : GameActivity(), Rfn009Navigator {
         val factory = Rfn009ViewModelFactory(application, this)
         val viewmodel = ViewModelProvider(this, factory).get(Rfn009ViewModel::class.java)
         viewmodel.navigator = this
-        viewmodel.idUser = intent.getStringExtra(ID_USER) ?: ""
+        viewmodel.idUser = intent.getStringExtra(Companion.ID_USER) ?: ""
         viewmodel.score.observe(this, Observer {
             // TODO: 4/10/2020 need do a link with the layout view
         })

@@ -31,7 +31,7 @@ class Rfn008Activity : GameActivity(), Rfn008Navigator {
         val factory = Rfn008ViewModelFactory(application, this)
         val viewmodel = ViewModelProvider(this, factory).get(Rfn008ViewModel::class.java)
         viewmodel.navigator = this
-        viewmodel.idUser = intent.getStringExtra(ID_USER)
+        viewmodel.idUser = intent.getStringExtra(Companion.ID_USER)
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()
         })

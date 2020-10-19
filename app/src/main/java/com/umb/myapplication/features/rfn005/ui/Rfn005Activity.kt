@@ -42,7 +42,7 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
             binding.statusBar.tvPoints.text = it.toString()
         })
         viewModel.navigator = this
-        viewModel.idUser = intent.getStringExtra(ID_USER)
+        viewModel.idUser = intent.getStringExtra(Companion.ID_USER)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.statusBar.tvTestDescription.isSelected = true
@@ -190,7 +190,7 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         timer.cancel()
         timer.purge()
         val intent = Intent(this, Rfn006Activity::class.java)
-        intent.putExtra(ID_USER, binding.viewmodel!!.idUser!!)
+        intent.putExtra(Companion.ID_USER, binding.viewmodel!!.idUser!!)
         startActivity(intent)
     }
 

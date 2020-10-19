@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="grades">
+        <item>Grado escolar</item>
+        <item>1ro de primaria</item>
+        <item>2do de primaria</item>
+        <item>3ro de primaria</item>
+        <item>4to de primaria</item>
+        <item>5to de primaria</item>
+        <item>otro</item>
+    </string-array>
+</resources>
