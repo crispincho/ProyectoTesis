@@ -12,8 +12,8 @@ open class GameActivity : AppCompatActivity() {
 
     companion object {
         const val ID_USER = "idUser"
-        const val GUARDIAN_CODE = "guardianCode"
-        const val CODE = "code"
+        const val SAMPLE_CODE = "sampleCode"
+        const val GUARDIAN_USER = "guardianUser"
         const val REQUEST_RECORD_AUDIO = 1001
     }
 

@@ -36,15 +36,6 @@ class FormularioViewmodel(application: Application, val context: Context) :
     val isVisibleGuardian = MutableLiveData<Boolean>()
     val guardianError = MutableLiveData<String>()
 
-    init {
-        nombre.value = "Cristhian Rodriguez"
-        edad.value = "1"
-        correo.value = "crisdrodriguez@hotmail.com"
-        grado.value = 2
-        telefono.value = "3133470728"
-        codigoGuardian.value = "JKL"
-    }
-
     fun toFirstTest() {
         Toast.makeText(context, "spinnerIndex: ${grado.value}", Toast.LENGTH_SHORT).show()
         FormularioRepository.initFirebase(context)
@@ -61,7 +52,7 @@ class FormularioViewmodel(application: Application, val context: Context) :
         isVisibleGuardian.value = guardianError.value != ""
         isVisibleGuardian.value = false
         val otherValidationsFail =
-            (nameError.value != "" || ageError.value != "" || emailError.value != "" || gradeError.value != "" || phoneError.value != "" || guardianError.value != "")
+            (!nameError.value.isNullOrEmpty() || !ageError.value.isNullOrEmpty() || !emailError.value.isNullOrEmpty() || !gradeError.value.isNullOrEmpty() || !phoneError.value.isNullOrEmpty() || !guardianError.value.isNullOrEmpty())
         FormularioRepository.getGuardianByCode(codigoGuardian.value, object : ViewModelRequest {
             override fun gotAnswer(guardian: Guardian) {
                 if (!otherValidationsFail) {
@@ -71,18 +62,15 @@ class FormularioViewmodel(application: Application, val context: Context) :
                         email = correo.value!!,
                         course = context.resources.getStringArray(R.array.grades)[grado.value!!],
                         telephone = telefono.value!!,
-                        guardianName = codigoGuardian.value!!,
+                        guardianUser = guardian.guardianUser!!,
+                        sampleCode = codigoGuardian.value!!
                     )
-                    FormularioRepository.insertUser(
-                        user,
-                        guardian.code!!,
-                        guardian.sampleGroup!!.code!!
-                    )
-                    navigator?.toNextActvity(user.id, guardian.code, guardian.sampleGroup.code!!)
+                    FormularioRepository.insertUser(user)
+                    navigator?.toNextActvity(user.id, guardian.sampleCode!!, guardian.guardianUser)
                 }
             }
 
-            override fun gotNoAnswer() {
+            override fun gotNoAnswer(message: String) {
                 guardianError.value = validateGuardianCode()
                 isVisibleGuardian.value = guardianError.value != ""
             }
@@ -165,6 +153,6 @@ class FormularioViewmodel(application: Application, val context: Context) :
 
     interface ViewModelRequest {
         fun gotAnswer(guardian: Guardian)
-        fun gotNoAnswer()
+        fun gotNoAnswer(message: String)
     }
 }

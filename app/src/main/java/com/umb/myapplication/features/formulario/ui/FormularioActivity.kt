@@ -42,11 +42,13 @@ class FormularioActivity : GameActivity(), FormularioNavigator {
 
     override fun toNextActvity(
         idUser: String,
-        guardianCode: String,
-        code: String
+        sampleCode: String,
+        guardianUser: String
     ) {
         val intent = Intent(this, Rfn004Activity::class.java)
         intent.putExtra(Companion.ID_USER, idUser)
+        intent.putExtra(Companion.GUARDIAN_USER, guardianUser)
+        intent.putExtra(Companion.SAMPLE_CODE, sampleCode)
         startActivity(intent)
     }
 

@@ -9,5 +9,6 @@ data class User(
     val email: String,
     val course: String,
     val telephone: String,
-    val guardianName: String
+    val guardianUser: String,
+    val sampleCode: String
 )

@@ -5,7 +5,6 @@ import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.umb.myapplication.features.formulario.data.entities.Guardian
-import com.umb.myapplication.features.formulario.data.entities.SampleGroup
 import com.umb.myapplication.features.formulario.data.entities.User
 import com.umb.myapplication.features.formulario.ui.viewmodel.FormularioViewmodel
 
@@ -20,9 +19,8 @@ object FormularioRepository {
         FirebaseApp.initializeApp(context)
     }
 
-    fun insertUser(user: User, guardianCode: String, code: String) {
-        databaseReference.child("participantes").child(guardianCode).child(code).child(user.id)
-            .setValue(user)
+    fun insertUser(user: User) {
+        databaseReference.child("participants").child(user.id).setValue(user)
     }
 
     fun getGuardianByCode(
@@ -30,58 +28,31 @@ object FormularioRepository {
         callback: FormularioViewmodel.ViewModelRequest
     ) {
         if (code == null) {
-            callback.gotNoAnswer()
+            callback.gotNoAnswer("El campo codigo esta vacio")
             return
         }
-        var guardianQuery: Guardian?
-        databaseReference.child("guardian").addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-                Log.i(
-                    TAG,
-                    "Error al obtener guardianes ${error.code}: ${error.message}"
-                )
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var madeQueries = 0
-                var isResult = false
-                var group: SampleGroup? = null
-                var totalQueries = 0
-                snapshot.children.forEach { _ ->
-                    totalQueries++
+        databaseReference.child("sampleCodes").child(code).child("guardianUser")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    val msg = "Error al obtener guardianes ${error.code}: ${error.message}"
+                    Log.i(TAG, msg)
+                    callback.gotNoAnswer(msg)
                 }
-                val guardians = snapshot.children.iterator()
-                while (guardians.hasNext() && group == null) {
-                    val guardian = guardians.next()
-                    databaseReference.child("guardian")
-                        .child(guardian.key!!)
-                        .orderByChild("code").equalTo(code)
-                        .addListenerForSingleValueEvent(object : ValueEventListener {
-                            override fun onCancelled(error: DatabaseError) {
-                                Log.i(
-                                    TAG,
-                                    "Error en la consulta del codigo guardian ${error.code}: ${error.message}"
-                                )
-                            }
 
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                group = snapshot.getValue(SampleGroup::class.java)
-                                if (group != null && guardian.key != null) {
-                                    guardianQuery = Guardian(
-                                        code = guardian.key!!,
-                                        sampleGroup = group!!
-                                    )
-                                    isResult = true
-                                    callback.gotAnswer(guardianQuery!!)
-                                }
-                                madeQueries++
-                                if (!isResult && madeQueries >= totalQueries) {
-                                    callback.gotNoAnswer()
-                                }
-                            }
-                        })
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val userName = snapshot.getValue(String::class.javaObjectType)
+                    if (!userName.isNullOrEmpty()) {
+                        callback.gotAnswer(
+                            Guardian(
+                                sampleCode = code,
+                                guardianUser = userName
+                            )
+                        )
+                    } else {
+                        callback.gotNoAnswer("El código introducido no existe, por favor verifique el código")
+                    }
                 }
-            }
-        })
+
+            })
     }
 }
