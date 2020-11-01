@@ -43,6 +43,8 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         })
         viewModel.navigator = this
         viewModel.idUser = intent.getStringExtra(Companion.ID_USER)
+        viewModel.guardianCode = intent.getStringExtra(Companion.GUARDIAN_CODE)
+        viewModel.sampleCode = intent.getStringExtra(Companion.SAMPLE_CODE)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.statusBar.tvTestDescription.isSelected = true
@@ -191,6 +193,8 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         timer.purge()
         val intent = Intent(this, Rfn006Activity::class.java)
         intent.putExtra(Companion.ID_USER, binding.viewmodel!!.idUser!!)
+        intent.putExtra(Companion.GUARDIAN_CODE, binding.viewmodel!!.guardianCode!!)
+        intent.putExtra(Companion.SAMPLE_CODE, binding.viewmodel!!.sampleCode!!)
         startActivity(intent)
     }
 

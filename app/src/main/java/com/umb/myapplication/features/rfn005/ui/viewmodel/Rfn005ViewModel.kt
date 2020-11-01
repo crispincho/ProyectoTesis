@@ -20,6 +20,8 @@ class Rfn005ViewModel(application: Application, val context: Context) :
     var navigator: Rfn005Navigator? = null
 
     var idUser: String? = null
+    var guardianCode: String? = null
+    var sampleCode: String? = null
 
     lateinit var startDate: Date
 
@@ -108,7 +110,9 @@ class Rfn005ViewModel(application: Application, val context: Context) :
                         omitedAnswers = omittedAnswers,
                         wrongAnswers = wrongAnswers,
                         time = Date().time - startDate.time
-                    )
+                    ),
+                    guardianCode.toString(),
+                    sampleCode.toString()
                 )
             }
             navigator?.toNextActvity()
