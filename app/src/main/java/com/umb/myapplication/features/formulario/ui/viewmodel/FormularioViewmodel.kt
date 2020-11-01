@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.umb.myapplication.R
+import com.umb.myapplication.core.utils.DialogLoading
 import com.umb.myapplication.features.formulario.data.FormularioRepository
 import com.umb.myapplication.features.formulario.data.entities.Guardian
 import com.umb.myapplication.features.formulario.data.entities.User
@@ -37,6 +38,8 @@ class FormularioViewmodel(application: Application, val context: Context) :
     val guardianError = MutableLiveData<String>()
 
     fun toFirstTest() {
+        val loading = DialogLoading(context)
+        loading.show()
         Toast.makeText(context, "spinnerIndex: ${grado.value}", Toast.LENGTH_SHORT).show()
         FormularioRepository.initFirebase(context)
         nameError.value = validateName(nombre.value)
@@ -52,7 +55,7 @@ class FormularioViewmodel(application: Application, val context: Context) :
         isVisibleGuardian.value = guardianError.value != ""
         isVisibleGuardian.value = false
         val otherValidationsFail =
-            (!nameError.value.isNullOrEmpty() || !ageError.value.isNullOrEmpty() || !emailError.value.isNullOrEmpty() || !gradeError.value.isNullOrEmpty() || !phoneError.value.isNullOrEmpty() || !guardianError.value.isNullOrEmpty())
+            (!nameError.value.isNullOrEmpty() || !ageError.value.isNullOrEmpty() || !emailError.value.isNullOrEmpty() || !gradeError.value.isNullOrEmpty() || !phoneError.value.isNullOrEmpty())
         FormularioRepository.getGuardianByCode(codigoGuardian.value, object : ViewModelRequest {
             override fun gotAnswer(guardian: Guardian) {
                 if (!otherValidationsFail) {
@@ -68,11 +71,13 @@ class FormularioViewmodel(application: Application, val context: Context) :
                     FormularioRepository.insertUser(user)
                     navigator?.toNextActvity(user.id, guardian.sampleCode!!, guardian.guardianUser)
                 }
+                loading.dismiss()
             }
 
             override fun gotNoAnswer(message: String) {
                 guardianError.value = validateGuardianCode()
                 isVisibleGuardian.value = guardianError.value != ""
+                loading.dismiss()
             }
         })
     }

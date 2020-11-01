@@ -56,4 +56,5 @@
     <string name="correo_invalido">El correo ingresado es inválido</string>
     <string name="celular_invalido">El numero de celular es invalido</string>
     <string name="codigo_guardian_invalido">El código de guardián ingresado es inválido</string>
+    <string name="loading">Cargando...</string>
 </resources>
