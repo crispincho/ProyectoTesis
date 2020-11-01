@@ -32,7 +32,7 @@ class Rfn004Activity : GameActivity(), Rfn004Navigator {
         binding.buttonDifferent.isEnabled = false
         viewmodel.navigator = this
         viewmodel.idUser = intent.getStringExtra(Companion.ID_USER).toString()
-        viewmodel.guardianCode = intent.getStringExtra(Companion.GUARDIAN_CODE).toString()
+        viewmodel.guardianUser = intent.getStringExtra(Companion.GUARDIAN_USER).toString()
         viewmodel.sampleCode = intent.getStringExtra(Companion.SAMPLE_CODE).toString()
         viewmodel.puntos.observe(this, Observer {
             binding.statusBar.tvPoints.text = it
@@ -51,10 +51,10 @@ class Rfn004Activity : GameActivity(), Rfn004Navigator {
         return intent.getStringExtra(Companion.ID_USER)!!
     }
 
-    override fun toNextActvity(idUser: String, guardianCode: String, sampleCode: String) {
+    override fun toNextActvity(idUser: String, guardianUser: String, sampleCode: String) {
         val intent = Intent(this, Rfn005Activity::class.java)
         intent.putExtra(Companion.ID_USER, idUser)
-        intent.putExtra(Companion.GUARDIAN_CODE, guardianCode)
+        intent.putExtra(Companion.GUARDIAN_USER, guardianUser)
         intent.putExtra(Companion.SAMPLE_CODE, sampleCode)
         startActivity(intent)
     }
