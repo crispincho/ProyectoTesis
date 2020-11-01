@@ -15,9 +15,11 @@ object Rfn005Repository {
         FirebaseApp.initializeApp(context)
     }
 
-    fun sendResults(idUser: String, results: Rfn005Results) {
-        databaseReference.child("participantes").child(idUser).child("Results").child("RFN005")
+    fun sendResults(idUser: String, results: Rfn005Results, guardianUser: String, sampleCode: String) {
+        databaseReference.child("participants").child(idUser).child("rfn005")
             .setValue(results)
+        databaseReference.child("results").child(guardianUser).child(sampleCode)
+            .child("rfn005").setValue(results)
     }
 
 }
