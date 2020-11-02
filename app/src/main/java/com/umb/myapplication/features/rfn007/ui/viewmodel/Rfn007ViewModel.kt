@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
+import android.widget.ImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -45,8 +46,8 @@ class Rfn007ViewModel(application: Application, val context: Context) :
         score.value=0
     }
 
-    fun playNext(){
-
+    fun playNext(btSpeech: ImageView){
+        btSpeech.isEnabled=false
         if (index==0){
             dateIninitial = Date()
             Log.d("indexCondition", index.toString())
@@ -55,6 +56,9 @@ class Rfn007ViewModel(application: Application, val context: Context) :
         if (songList.size > index) {
             mediaPlayer = MediaPlayer.create(context, songList[index])
             mediaPlayer.start()
+            mediaPlayer.setOnCompletionListener {
+                btSpeech.isEnabled=true
+            }
             finalTime = mediaPlayer.duration
             startTime = mediaPlayer.currentPosition
             startTime = mediaPlayer.currentPosition
