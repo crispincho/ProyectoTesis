@@ -87,7 +87,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:hint="@string/escribe_correctamente"
-                android:maxLength="20"
+                android:maxLength="40"
                 android:paddingHorizontal="16dp"
                 android:singleLine="true" />
         </LinearLayout>

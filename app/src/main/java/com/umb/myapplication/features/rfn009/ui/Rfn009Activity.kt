@@ -29,6 +29,8 @@ class Rfn009Activity : GameActivity(), Rfn009Navigator {
         val viewmodel = ViewModelProvider(this, factory).get(Rfn009ViewModel::class.java)
         viewmodel.navigator = this
         viewmodel.idUser = intent.getStringExtra(Companion.ID_USER) ?: ""
+        viewmodel.guardianUser = intent.getStringExtra(Companion.GUARDIAN_USER) ?: ""
+        viewmodel.sampleCode = intent.getStringExtra(Companion.SAMPLE_CODE) ?: ""
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()
         })
