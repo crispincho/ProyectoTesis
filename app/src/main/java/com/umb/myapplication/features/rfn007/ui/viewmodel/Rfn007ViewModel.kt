@@ -46,6 +46,7 @@ class Rfn007ViewModel(application: Application, val context: Context) :
     }
 
     fun playNext(){
+
         if (index==0){
             dateIninitial = Date()
             Log.d("indexCondition", index.toString())
@@ -63,6 +64,7 @@ class Rfn007ViewModel(application: Application, val context: Context) :
             insertResultTestRFN007(navigator!!.getUserID(), score.value!!.toInt(),
                 Date().time-dateIninitial.time, guardianUser.toString(),
                 sampleCode.toString())
+            navigator!!.toNextActvity()
         }
     }
 

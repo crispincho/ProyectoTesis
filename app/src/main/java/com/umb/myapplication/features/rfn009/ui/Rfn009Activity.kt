@@ -1,6 +1,6 @@
 package com.umb.myapplication.features.rfn009.ui
 
-import android.app.PendingIntent.getActivity
+
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
