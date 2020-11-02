@@ -202,7 +202,7 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         val dialog = DialogInstructions(
             this,
             getString(R.string.test_rfn005_instructions),
-            R.raw.rfn005_instrucciones,
+            R.raw.rfn005_instructivo,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {
                     assignObserversButtons()

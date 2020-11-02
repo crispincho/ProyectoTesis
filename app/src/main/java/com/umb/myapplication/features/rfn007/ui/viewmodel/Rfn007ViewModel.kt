@@ -27,11 +27,11 @@ class Rfn007ViewModel(application: Application, val context: Context) :
     var score = MutableLiveData<Int>()
     private var resUser: MutableList<Boolean> = mutableListOf()
     private val songList = listOf(R.raw.rfn007_blusa,
-        R.raw.rfn007_tomu, R.raw.rfn007_tropa, R.raw.rfn007_amplio,
-        R.raw.rfn004_foca_foca, R.raw.rfn004_cania_calla, R.raw.rfn004_carro_jarro,
-        R.raw.rfn004_caja_caja, R.raw.rfn004_paso_peso, R.raw.rfn004_misa_mesa,
-        R.raw.rfn004_gato_gato, R.raw.rfn004_callo_callo, R.raw.rfn004_mano_mano,
-        R.raw.rfn004_cama_cama, R.raw.rfn004_pantera_bandera)
+        R.raw.rfn007_vagido, R.raw.rfn007_tropa, R.raw.rfn007_amplio,
+        R.raw.rfn007_abuhado, R.raw.rfn007_chicharo, R.raw.rfn007_abotagado,
+        R.raw.rfn007_cristobal, R.raw.rfn007_burdegano, R.raw.rfn007_inadvertencia,
+        R.raw.rfn007_sobre, R.raw.rfn007_trabuco, R.raw.rfn007_ditirambo,
+        R.raw.rfn007_senectud, R.raw.rfn007_quemar)
     private val listWork = listOf("blusa", "vagido", "tropa", "amplio",
         "abuhado","chícharo","abotagado","cristóbal","burdégano","inadvertencia",
         "sobre","trabuco","ditirambo","senectud","quemar")
