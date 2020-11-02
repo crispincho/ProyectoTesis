@@ -65,7 +65,7 @@ class Rfn009ViewModel(application: Application, val context: Context) :
         correctWork.visibility = View.INVISIBLE
 
         if(listWorks.size<indexWork){
-            insertResultTestRFN009(navigator!!.getUserID(), score.value!!.toInt(),
+            insertResultTestRFN009(idUser.toString(), score.value!!.toInt(),
                                 Date().time-dateIninitial.time, resUserText,
                                     guardianUser.toString(),
                                     sampleCode.toString())
