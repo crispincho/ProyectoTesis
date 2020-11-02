@@ -149,7 +149,7 @@ class Rfn007Activity : GameActivity() ,
                 MotionEvent.ACTION_UP -> {
                     Log.d("SpeechToText", "ACTION_UP")
                     speechRecognizer.stopListening()
-                    binding.viewmodel!!.playNext()
+                    binding.viewmodel!!.playNext(btSpeech)
                     return@setOnTouchListener true
                 }
 
