@@ -70,7 +70,7 @@ class Rfn006Activity : GameActivity(), Rfn006Navigator {
         val dialog = DialogInstructions(
             this,
             getString(R.string.test_rfn008_instructions),
-            R.raw.rfn006_instrucciones,
+            R.raw.rfn006_instructivo,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {
                     binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
