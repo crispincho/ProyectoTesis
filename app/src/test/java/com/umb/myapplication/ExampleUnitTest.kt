@@ -13,5 +13,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+        val string = "avc"
+        assertEquals(5,string.toInt())
     }
+
+
+
+
 }

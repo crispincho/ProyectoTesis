@@ -58,21 +58,35 @@ class FormularioViewmodel(application: Application, val context: Context) :
         isVisibleCourse.value = gradeError.value != ""
         phoneError.value = validatePhone(telefono.value)
         isVisiblePhone.value = phoneError.value != ""
-        val guardian = validateGuardianCode(codigoGuardian.value)
-        guardianError.value = guardian.message
         isVisibleGuardian.value = guardianError.value != ""
-        if (nameError.value != "" || ageError.value != "" || emailError.value != "" || gradeError.value != "" || phoneError.value != "" || guardianError.value != "")
-            return
-        val user = User(
-            name = cleanName(nombre.value!!),
-            age = edad.value!!.toInt(),
-            email = correo.value!!,
-            course = context.resources.getStringArray(R.array.grades)[grado.value!!],
-            telephone = telefono.value!!,
-            guardianName = codigoGuardian.value!!,
-        )
-        FormularioRepository.insertUser(user, guardian.code!!, guardian.sampleGroup!!.code!!)
-        navigator?.toNextActvity(user.id, guardian.code, guardian.sampleGroup.code!!)
+        isVisibleGuardian.value = false
+        val otherValidationsFail =
+            (nameError.value != "" || ageError.value != "" || emailError.value != "" || gradeError.value != "" || phoneError.value != "" || guardianError.value != "")
+        FormularioRepository.getGuardianByCode(codigoGuardian.value, object : ViewModelRequest {
+            override fun gotAnswer(guardian: Guardian) {
+                if (!otherValidationsFail) {
+                    val user = User(
+                        name = cleanName(nombre.value!!),
+                        age = edad.value!!.toInt(),
+                        email = correo.value!!,
+                        course = context.resources.getStringArray(R.array.grades)[grado.value!!],
+                        telephone = telefono.value!!,
+                        guardianName = codigoGuardian.value!!,
+                    )
+                    FormularioRepository.insertUser(
+                        user,
+                        guardian.code!!,
+                        guardian.sampleGroup!!.code!!
+                    )
+                    navigator?.toNextActvity(user.id, guardian.code, guardian.sampleGroup.code!!)
+                }
+            }
+
+            override fun gotNoAnswer() {
+                guardianError.value = validateGuardianCode()
+                isVisibleGuardian.value = guardianError.value != ""
+            }
+        })
     }
 
     private fun validateName(name: String?): String {
@@ -89,14 +103,14 @@ class FormularioViewmodel(application: Application, val context: Context) :
     }
 
     private fun validateAge(ageString: String?): String {
-        val MINIMUM_AGE = 6
-        val MAXIMUN_AGE = 9
+        val minimumAge = 6
+        val maximunAge = 9
         if (ageString.isNullOrEmpty()) {
             return context.getString(R.string.requerido)
         }
         try {
             val age: Int = ageString.toInt()
-            if (age < MINIMUM_AGE || age > MAXIMUN_AGE) {
+            if (age < minimumAge || age > maximunAge) {
                 return context.getString(R.string.edad_fuera_rango)
             }
         } catch (e: NumberFormatException) {
@@ -133,14 +147,12 @@ class FormularioViewmodel(application: Application, val context: Context) :
         return ""
     }
 
-    private fun validateGuardianCode(code: String?): Guardian {
-        if (code.isNullOrEmpty()) {
-            return Guardian(message = context.getString(R.string.requerido))
+    private fun validateGuardianCode(): String {
+        return if (codigoGuardian.value == null) {
+            context.getString(R.string.requerido)
+        } else {
+            context.getString(R.string.codigo_guardian_invalido)
         }
-        val guardian = getGuardianData(code)
-        if (guardian.code == null || guardian.sampleGroup == null)
-            return Guardian(message = context.getString(R.string.codigo_guardian_invalido))
-        return guardian
     }
 
     private fun cleanName(name: String): String {
@@ -151,7 +163,8 @@ class FormularioViewmodel(application: Application, val context: Context) :
         return newName
     }
 
-    private fun getGuardianData(code: String): Guardian {
-        return FormularioRepository.getGuardianByCode(code) ?: Guardian()
+    interface ViewModelRequest {
+        fun gotAnswer(guardian: Guardian)
+        fun gotNoAnswer()
     }
 }
