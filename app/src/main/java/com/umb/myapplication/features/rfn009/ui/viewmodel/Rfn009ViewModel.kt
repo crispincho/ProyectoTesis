@@ -64,15 +64,18 @@ class Rfn009ViewModel(application: Application, val context: Context) :
         correctWork.setText("")
         correctWork.visibility = View.INVISIBLE
 
-        if(listWorks.size<indexWork){
+        if(listWorks.size==indexWork+1){
             insertResultTestRFN009(idUser.toString(), score.value!!.toInt(),
                                 Date().time-dateIninitial.time, resUserText,
                                     guardianUser.toString(),
                                     sampleCode.toString())
            navigator.toNextActvity()
+        }else{
+            indexWork++
+            work.text = listWorks[indexWork]
         }
-        indexWork++
-        work.text = listWorks[indexWork]
+
+
     }
 
     fun actionIncorrect(correctWork: EditText){

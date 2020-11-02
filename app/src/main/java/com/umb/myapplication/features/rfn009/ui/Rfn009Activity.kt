@@ -1,6 +1,7 @@
 package com.umb.myapplication.features.rfn009.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
@@ -9,13 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.umb.myapplication.R
 import com.umb.myapplication.core.ui.GameActivity
+import com.umb.myapplication.core.ui.SplashActivity
 import com.umb.myapplication.core.utils.DialogInstructions
 import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn009Binding
 import com.umb.myapplication.features.rfn009.ui.viewmodel.Rfn009ViewModel
 import com.umb.myapplication.features.rfn009.ui.viewmodel.Rfn009ViewModelFactory
 import kotlinx.android.synthetic.main.status_bar.view.*
-import kotlin.system.exitProcess
 
 class Rfn009Activity : GameActivity(), Rfn009Navigator {
 
@@ -54,8 +55,10 @@ class Rfn009Activity : GameActivity(), Rfn009Navigator {
     }
 
     override fun toNextActvity() {
-        finish()
-        exitProcess(0)
+        val intent = Intent(this, SplashActivity::class.java)
+        //finish()
+        //System.exit(0)
+        startActivity(intent)
     }
 
     override fun activateTest() {

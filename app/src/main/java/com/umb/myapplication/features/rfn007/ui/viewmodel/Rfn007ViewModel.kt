@@ -91,15 +91,17 @@ class Rfn007ViewModel(application: Application, val context: Context) :
         }
     }
 
-    fun playInitSound(){
+    fun playInitSound(microphone: ImageView) {
         val thread =Thread(Runnable {
             viewModelScope.launch (Dispatchers.Main) {
+
                 mediaPlayer.start()
                 finalTime = mediaPlayer.duration
                 startTime = mediaPlayer.currentPosition
                 withContext(Dispatchers.IO){
                     Thread.sleep(finalTime.toLong())
                 }
+                microphone.isEnabled=true
                 navigator!!.activateTest()
             }
         })

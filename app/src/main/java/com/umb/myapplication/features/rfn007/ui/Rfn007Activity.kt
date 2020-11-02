@@ -56,15 +56,14 @@ class Rfn007Activity : GameActivity() ,
         val dialog = DialogInstructions(
             this,
             getString(R.string.test_rfn008_instructions),
-            R.raw.rfn008_instrucciones,
+            R.raw.rfn007_instrucciones,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {
                     binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()
                     binding.statusBar.tvTime.start()
+                    binding.microphone.isEnabled=false
+                    binding.viewmodel!!.playInitSound(binding.microphone)
 
-                    //Metodos que se usaran
-
-                    binding.viewmodel!!.playInitSound()
                 }
             })
         dialog.show()
