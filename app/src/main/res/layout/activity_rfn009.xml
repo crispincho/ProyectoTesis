@@ -31,12 +31,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/correct"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginEnd="100dp"
             android:layout_marginRight="100dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{()-> viewmodel.actionCorrect(work,workCorrect)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
@@ -44,12 +45,13 @@
             app:srcCompat="@drawable/ic_affirmative_button" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/incorrect"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{()-> viewmodel.actionIncorrect(workCorrect)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.75"
@@ -63,13 +65,13 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingHorizontal="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView11"
+            app:layout_constraintBottom_toTopOf="@+id/incorrect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statusBar">
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/work"
                 style="@style/rfn009Text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -78,7 +80,7 @@
                 tools:text="Sorro" />
 
             <EditText
-                android:id="@+id/textView21"
+                android:id="@+id/workCorrect"
                 style="@style/rfn009Text"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
