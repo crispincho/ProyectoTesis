@@ -15,6 +15,7 @@ import com.umb.myapplication.databinding.ActivityRfn009Binding
 import com.umb.myapplication.features.rfn009.ui.viewmodel.Rfn009ViewModel
 import com.umb.myapplication.features.rfn009.ui.viewmodel.Rfn009ViewModelFactory
 import kotlinx.android.synthetic.main.status_bar.view.*
+import kotlin.system.exitProcess
 
 class Rfn009Activity : GameActivity(), Rfn009Navigator {
 
@@ -54,7 +55,7 @@ class Rfn009Activity : GameActivity(), Rfn009Navigator {
 
     override fun toNextActvity() {
         finish()
-        System.exit(0)
+        exitProcess(0)
     }
 
     override fun activateTest() {

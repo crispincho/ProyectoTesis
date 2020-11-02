@@ -67,10 +67,6 @@ class Rfn007Activity : GameActivity() ,
         dialog.show()
     }
 
-    override fun getUserID(): String {
-        TODO("Not yet implemented")
-    }
-
     override fun toNextActvity() {
         val intent = Intent(this, Rfn008Activity::class.java)
         intent.putExtra(Companion.ID_USER, binding.viewmodel!!.idUser!!)

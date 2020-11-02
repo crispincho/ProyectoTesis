@@ -123,10 +123,10 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/arrowLeftButton"
             android:onClick="@{() -> viewmodel.selectSide(1)}"
@@ -135,13 +135,13 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_arrow_left" />
+            app:layout_constraintVertical_bias="0.552"
+            app:srcCompat="@mipmap/alien_verde" />
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:layout_marginStart="56dp"
             android:layout_marginLeft="56dp"
             android:background="@android:color/transparent"
@@ -152,12 +152,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView11"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView11"
-            app:srcCompat="@drawable/ic_arrow_left" />
+            app:srcCompat="@mipmap/alien_verde" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:layout_marginStart="56dp"
             android:layout_marginLeft="56dp"
             android:background="@android:color/transparent"
@@ -168,12 +168,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView12"
-            app:srcCompat="@drawable/ic_arrow_left" />
+            app:srcCompat="@mipmap/alien_verde" />
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:layout_marginEnd="56dp"
             android:layout_marginRight="56dp"
             android:contentDescription="@string/arrowRigthButton"
@@ -183,12 +183,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintEnd_toStartOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView10"
-            app:srcCompat="@drawable/ic_arrow_rigth" />
+            app:srcCompat="@mipmap/alien_rojo" />
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:layout_marginEnd="56dp"
             android:layout_marginRight="56dp"
             android:contentDescription="@string/arrowRigthButton"
@@ -198,12 +198,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView11"
             app:layout_constraintEnd_toStartOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView11"
-            app:srcCompat="@drawable/ic_arrow_rigth" />
+            app:srcCompat="@mipmap/alien_rojo" />
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:layout_marginEnd="56dp"
             android:layout_marginRight="56dp"
             android:contentDescription="@string/arrowRigthButton"
@@ -214,7 +214,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView12"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_arrow_rigth" />
+            app:srcCompat="@mipmap/alien_rojo" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/firstRow"

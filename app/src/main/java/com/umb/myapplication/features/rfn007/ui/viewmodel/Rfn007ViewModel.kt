@@ -65,7 +65,7 @@ class Rfn007ViewModel(application: Application, val context: Context) :
             index+=1
         }else{
             Rfn007Repository.initFirebase(context)
-            insertResultTestRFN007(navigator!!.getUserID(), score.value!!.toInt(),
+            insertResultTestRFN007(idUser.toString(), score.value!!.toInt(),
                 Date().time-dateIninitial.time, guardianUser.toString(),
                 sampleCode.toString())
             navigator!!.toNextActvity()
