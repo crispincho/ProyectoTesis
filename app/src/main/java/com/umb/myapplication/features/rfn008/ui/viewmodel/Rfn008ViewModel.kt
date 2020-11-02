@@ -15,6 +15,8 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     AndroidViewModel(application) {
 
     var idUser: String? = null
+    var guardianUser: String? = null
+    var sampleCode: String? = null
     var navigator: Rfn008Navigator? = null
 
     val textBoxOne = MutableLiveData<String>()
@@ -136,7 +138,8 @@ class Rfn008ViewModel(application: Application, val context: Context) :
             scoreSerie()
             if (++index >= listAnswers.size) {
                 Rfn008Repository.initFirebase(context)
-                Rfn008Repository.sendData(idUser!!, Date().time - startDate.time, score.value!!)
+                Rfn008Repository.sendData(idUser!!, Date().time - startDate.time, score.value!!,
+                    guardianUser.toString(), sampleCode.toString())
                 navigator?.toNextActvity()
                 return
             }

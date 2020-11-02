@@ -23,7 +23,6 @@ class Rfn004ViewModel(application: Application, val context: Context) :
     var idUser:String=""
     var guardianUser:String=""
     var sampleCode:String=""
-
     private val songList = listOf(R.raw.rfn004_via_dia,
                                 R.raw.rfn004_capa_cana, R.raw.rfn004_foto_foco, R.raw.rfn004_unia_unia,
                                 R.raw.rfn004_foca_foca, R.raw.rfn004_cania_calla, R.raw.rfn004_carro_jarro,
@@ -65,7 +64,7 @@ class Rfn004ViewModel(application: Application, val context: Context) :
             index += 1
         }else{
             Rfn004Repository.initFirebase(context)
-            Rfn004Repository.insertResultTestRFN004(idUser,guardianUser, sampleCode,puntos.value!!.toInt(), Date().time - dateIninitial.time,)
+            Rfn004Repository.insertResultTestRFN004(idUser,guardianUser, sampleCode,puntos.value!!.toInt(), Date().time - dateIninitial.time)
             navigator!!.toNextActvity(idUser,guardianUser,sampleCode)
         }
     }

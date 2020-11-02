@@ -21,8 +21,7 @@ object Rfn004Repository {
     fun insertResultTestRFN004(idUser: String, guardianUser: String, sampleCode: String, score: Int, time:Long){
         databaseReference.child("participants").child(idUser).child("rfn004").setValue(
             Rfn004Result(score, time))
-        databaseReference.child("results").child(guardianUser).child(sampleCode).child("rfn004").setValue(
-            Rfn004Result(score, time)
-        )
+        databaseReference.child("results").child(guardianUser).child(sampleCode)
+            .child("rfn004").child(idUser).setValue(Rfn004Result(score, time))
     }
 }

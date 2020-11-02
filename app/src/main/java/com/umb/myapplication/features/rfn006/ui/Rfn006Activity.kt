@@ -36,6 +36,8 @@ class Rfn006Activity : GameActivity(), Rfn006Navigator {
         val viewmodel = ViewModelProvider(this, factory).get(Rfn006ViewModel::class.java)
         viewmodel.navigator = this
         viewmodel.idUser = intent.getStringExtra(Companion.ID_USER)
+        viewmodel.guardianUser = intent.getStringExtra(Companion.GUARDIAN_USER)
+        viewmodel.samplecode = intent.getStringExtra(Companion.SAMPLE_CODE)
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()
         })
@@ -59,6 +61,8 @@ class Rfn006Activity : GameActivity(), Rfn006Navigator {
     override fun toNextActvity() {
         val intent = Intent(this, Rfn007Activity::class.java)
         intent.putExtra(Companion.ID_USER, binding.viewmodel!!.idUser!!)
+        intent.putExtra(Companion.GUARDIAN_USER, binding.viewmodel!!.guardianUser!!)
+        intent.putExtra(Companion.SAMPLE_CODE, binding.viewmodel!!.samplecode!!)
         startActivity(intent)
     }
 

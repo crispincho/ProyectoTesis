@@ -19,7 +19,7 @@ object Rfn005Repository {
         databaseReference.child("participants").child(idUser).child("rfn005")
             .setValue(results)
         databaseReference.child("results").child(guardianUser).child(sampleCode)
-            .child("rfn005").setValue(results)
+            .child("rfn005").child(idUser).setValue(results)
     }
 
 }

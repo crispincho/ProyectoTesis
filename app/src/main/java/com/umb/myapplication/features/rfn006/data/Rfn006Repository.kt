@@ -74,9 +74,11 @@ object Rfn006Repository {
         return defaultWords
     }
 
-    fun sendRestults(userID: String, time: Long, score: Int, listWords: List<Word>) {
-        databaseReference.child("participantes").child(userID).child("Results")
-            .child("RFN006").setValue(Rfn006Result(score, time, listWords))
+    fun sendRestults(idUser: String, time: Long, score: Int, listWords: List<Word> , guardianUser: String, sampleCode: String) {
+        databaseReference.child("participants").child(idUser).child("rfn006")
+            .setValue(Rfn006Result(score, time, listWords))
+        databaseReference.child("results").child(guardianUser).child(sampleCode)
+            .child("rfn006").child(idUser).setValue(Rfn006Result(score, time, listWords))
     }
 
 }

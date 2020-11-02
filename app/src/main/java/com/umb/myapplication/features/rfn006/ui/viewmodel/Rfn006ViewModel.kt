@@ -15,6 +15,8 @@ class Rfn006ViewModel(application: Application, val context: Context) :
     var navigator: Rfn006Navigator? = null
     val score = MutableLiveData<Int>()
     var idUser: String? = null
+    var guardianUser: String? = null
+    var samplecode: String? = null
     lateinit var startTime: Date
     private var wordsIndex = 0
 
@@ -106,7 +108,9 @@ class Rfn006ViewModel(application: Application, val context: Context) :
                 idUser!!,
                 Date().time - startTime.time,
                 score.value!!,
-                listWordResult
+                listWordResult,
+                guardianUser.toString(),
+                samplecode.toString()
             )
             navigator?.toNextActvity()
         }

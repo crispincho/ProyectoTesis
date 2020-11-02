@@ -2,6 +2,7 @@ package com.umb.myapplication.features.rfn008.ui
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.umb.myapplication.core.utils.DialogInstructionsListener
 import com.umb.myapplication.databinding.ActivityRfn008Binding
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModel
 import com.umb.myapplication.features.rfn008.ui.viewmodel.Rfn008ViewModelFactory
+import com.umb.myapplication.features.rfn009.ui.Rfn009Activity
 import kotlinx.android.synthetic.main.status_bar.view.*
 import java.util.*
 
@@ -32,6 +34,8 @@ class Rfn008Activity : GameActivity(), Rfn008Navigator {
         val viewmodel = ViewModelProvider(this, factory).get(Rfn008ViewModel::class.java)
         viewmodel.navigator = this
         viewmodel.idUser = intent.getStringExtra(Companion.ID_USER)
+        viewmodel.guardianUser = intent.getStringExtra(Companion.GUARDIAN_USER)
+        viewmodel.sampleCode = intent.getStringExtra(Companion.SAMPLE_CODE)
         viewmodel.score.observe(this, Observer {
             binding.statusBar.tvPoints.text = it.toString()
         })
@@ -57,7 +61,12 @@ class Rfn008Activity : GameActivity(), Rfn008Navigator {
     }
 
     override fun toNextActvity() {
-        Toast.makeText(this, "Fin de la prueba", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "Fin de la prueba", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, Rfn009Activity::class.java)
+        intent.putExtra(Companion.ID_USER, binding.viewmodel!!.idUser!!)
+        intent.putExtra(Companion.GUARDIAN_USER, binding.viewmodel!!.guardianUser!!)
+        intent.putExtra(Companion.SAMPLE_CODE, binding.viewmodel!!.sampleCode!!)
+        startActivity(intent)
     }
 
     /**Animations**/
