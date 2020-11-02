@@ -11,6 +11,8 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.util.Log
 import android.view.MotionEvent
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -146,6 +148,8 @@ class Rfn007Activity : GameActivity() ,
                     Log.d("SpeechToText", "ACTION_UP")
                     speechRecognizer.stopListening()
                     binding.viewmodel!!.playNext(btSpeech)
+                    binding.microphone.clearAnimation()
+                    binding.microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_microphone_disable))
                     return@setOnTouchListener true
                 }
 
@@ -155,7 +159,10 @@ class Rfn007Activity : GameActivity() ,
                     }
                     Log.d("SpeechToText", "ACTION_DOWN")
                     speechRecognizer.startListening(speechRecognizerIntent)
-                     return@setOnTouchListener true
+                    val presedJump: Animation = AnimationUtils.loadAnimation(this, R.anim.microphone_on)
+                    binding.microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_microphone_enable))
+                    binding.microphone.startAnimation(presedJump)
+                    return@setOnTouchListener true
                 }
             }
             false
