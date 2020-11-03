@@ -27,7 +27,7 @@ class Rfn009ViewModel(application: Application, val context: Context) :
     private var dateIninitial: Date = Date()
     private val listWorks = listOf("La mayor de las niñas era Rosa",
         "La maestra nos enseñó unas poesias",
-        "Mi mama me hice un rico pastel",
+        "Mi mamá me hice un rico pastel",
         "Tuve que hacer mañana mi tarea",
         "Mariana tiene ocho años",
         "Tengo muchas dulces en mi bolsillo",
@@ -36,13 +36,13 @@ class Rfn009ViewModel(application: Application, val context: Context) :
         "Mañana fui al cine con mí tía")
     private val listWorksCorrects = listOf("La mayor de las niñas era Rosa",
         "La maestra nos enseñó unas poesias",
-        "Mi mama me hizo un rico pastel",
+        "Mi mamá me hizo un rico pastel",
         "Tengo que hacer mañana mi tarea",
         "Mariana tiene ocho años",
         "Tengo muchos dulces en mi bolsillo",
         "Mis juguetes preferidos son los carritos",
         "La gallina y sus pollitos comen granos de maíz",
-        "Mañana fui al cine con mí tía")
+        "Mañana voy al cine con mí tía")
     private var resUserText: MutableList<String> = mutableListOf()
     private var resUserBoolean: MutableList<Boolean> = mutableListOf()
     init {
