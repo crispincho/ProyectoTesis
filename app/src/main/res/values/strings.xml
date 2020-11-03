@@ -48,7 +48,7 @@
     <string name="test_rfn006_instructions">En la pantalla aparecerán unas palabras, algunas son reales y otras inventadas, lo que tienes que hacer es, si la palabra es real presionar el marciano feliz verde, de lo contrario presionar el marciano triste rojo</string>
     <string name="test_rfn007_instructions">Te voy a decir algunas palabras y tendrás que repetirlas después de mí, algunas son reales y otras son inventadas, debes repetirlas todas sin hacer comentarios. No olvides mantener presionado el botón, mientras repites la palabra.</string>
     <string name="test_rfn008_instructions">Te voy a decir unas letras y cuando acabe quiero que las busques en el teclado y las oprimas en el mismo orden que yo te las dije</string>
-    <string name="test_rfn009_instructions">Vas a escuchar unas oraciones, una oracion a la vez y tú tienes que presionar el botón verde para decirme si está bien escrita la oración, de lo contrario debes presionar el botón rojo escribir correctamente la palabra y presionar el botón verde. </string>
+    <string name="test_rfn009_instructions">Vas a escuchar unas oraciones, una oracion a la vez y tú tienes que presionar el botón verde para decirme si está bien escrita la oración, de lo contrario debes presionar el botón rojo escribir correctamente la oración y presionar el botón verde. </string>
     <string name="escribe_correctamente">Escribir Correctamente</string>
     <string name="recod_audio_permission_denied">Este permiso es necesario para le ejecucion correcta de la aplicación</string>
     <string name="edad_invalida">Por favor introduzca una edad valida</string>
