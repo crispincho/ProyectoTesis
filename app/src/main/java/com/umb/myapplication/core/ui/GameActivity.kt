@@ -61,4 +61,6 @@ open class GameActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+    }
 }
