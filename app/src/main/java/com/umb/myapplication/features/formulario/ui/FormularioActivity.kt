@@ -27,6 +27,8 @@ class FormularioActivity : GameActivity(), FormularioNavigator {
         viewmodel.navigator = this
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = this
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P)
+            binding.animationRobot.speed = 0F
     }
 
     @Suppress("DEPRECATION")
