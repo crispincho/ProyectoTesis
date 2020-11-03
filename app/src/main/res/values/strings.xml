@@ -44,7 +44,7 @@
     <string name="y">Y</string>
     <string name="z">Z</string>
     <string name="test_rfn004_instructions">Te voy a mencionar cada vez dos palabras, lo que tendrás que hacer es decirme si las palabras  que escuchaste son iguales o diferente.</string>
-    <string name="test_rfn005_instructions">En la parte de arriba de la pantalla vas a encontrar dos flechas, lo que tienes que hacer es buscar el conjunto de flechas que sea igual a las flechas de arriba. </string>
+    <string name="test_rfn005_instructions">En la parte de arriba de la pantalla vas a encontrar dos flechas, lo que tienes que hacer es buscar y seleccionar las flechas que sean iguales a la flecha verde, siempre y cuando antes vaya una flecha que apunte en la misma dirección que la flecha roja.</string>
     <string name="test_rfn006_instructions">En la pantalla aparecerán unas palabras, algunas son reales y otras inventadas, lo que tienes que hacer es, si la palabra es real presionar el marciano feliz verde, de lo contrario presionar el marciano triste rojo</string>
     <string name="test_rfn007_instructions">Te voy a decir algunas palabras y tendrás que repetirlas después de mí, algunas son reales y otras son inventadas, debes repetirlas todas sin hacer comentarios. No olvides mantener presionado el botón, mientras repites la palabra.</string>
     <string name="test_rfn008_instructions">Te voy a decir unas letras y cuando acabe quiero que las busques en el teclado y las oprimas en el mismo orden que yo te las dije</string>
