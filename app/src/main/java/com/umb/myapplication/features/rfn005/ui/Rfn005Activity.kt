@@ -7,7 +7,6 @@ import android.os.SystemClock
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -24,10 +23,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class Rfn005Activity : GameActivity(), Rfn005Navigator {
+class Rfn005Activity : GameActivity(), Rfn005Navigator{
 
     lateinit var binding: ActivityRfn005Binding
     private lateinit var timer: Timer
+    private lateinit var buttonsList: MutableList<View>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,98 +49,57 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         binding.lifecycleOwner = this
         binding.statusBar.tvTestDescription.isSelected = true
         activateViews()
-    }
-
-    private fun assignObserversButtons() {
-        binding.viewmodel?.buttonsMutableList!![0].observe(
-            this,
-            Observer { rotateButton(binding.imageButton10, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![1].observe(
-            this,
-            Observer { rotateButton(binding.imageButton11, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![2].observe(
-            this,
-            Observer { rotateButton(binding.imageButton12, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![3].observe(
-            this,
-            Observer { rotateButton(binding.imageButton13, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![4].observe(
-            this,
-            Observer { rotateButton(binding.imageButton14, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![5].observe(
-            this,
-            Observer { rotateButton(binding.imageButton15, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![6].observe(
-            this,
-            Observer { rotateButton(binding.imageButton16, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![7].observe(
-            this,
-            Observer { rotateButton(binding.imageButton17, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![8].observe(
-            this,
-            Observer { rotateButton(binding.imageButton18, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![9].observe(
-            this,
-            Observer { rotateButton(binding.imageButton20, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![10].observe(
-            this,
-            Observer { rotateButton(binding.imageButton21, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![11].observe(
-            this,
-            Observer { rotateButton(binding.imageButton22, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![12].observe(
-            this,
-            Observer { rotateButton(binding.imageButton23, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![13].observe(
-            this,
-            Observer { rotateButton(binding.imageButton24, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![14].observe(
-            this,
-            Observer { rotateButton(binding.imageButton25, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![15].observe(
-            this,
-            Observer { rotateButton(binding.imageButton26, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![16].observe(
-            this,
-            Observer { rotateButton(binding.imageButton27, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![17].observe(
-            this,
-            Observer { rotateButton(binding.imageButton28, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![18].observe(
-            this,
-            Observer { rotateButton(binding.imageButton01, it[0]) })
-        binding.viewmodel?.buttonsMutableList!![19].observe(
-            this,
-            Observer { rotateButton(binding.imageButton02, it[0]) })
+        buttonsList = mutableListOf(
+            binding.imageButton10,
+            binding.imageButton11,
+            binding.imageButton12,
+            binding.imageButton13,
+            binding.imageButton14,
+            binding.imageButton15,
+            binding.imageButton16,
+            binding.imageButton17,
+            binding.imageButton18,
+            binding.imageButton20,
+            binding.imageButton21,
+            binding.imageButton22,
+            binding.imageButton23,
+            binding.imageButton24,
+            binding.imageButton25,
+            binding.imageButton26,
+            binding.imageButton27,
+            binding.imageButton28,
+            binding.imageButton01,
+            binding.imageButton02
+        )
     }
 
     private fun assignClickListenerButtons() {
-        binding.imageButton10.setOnClickListener { clicEvent(it, binding.viewmodel, 0) }
-        binding.imageButton11.setOnClickListener { clicEvent(it, binding.viewmodel, 1) }
-        binding.imageButton12.setOnClickListener { clicEvent(it, binding.viewmodel, 2) }
-        binding.imageButton13.setOnClickListener { clicEvent(it, binding.viewmodel, 3) }
-        binding.imageButton14.setOnClickListener { clicEvent(it, binding.viewmodel, 4) }
-        binding.imageButton15.setOnClickListener { clicEvent(it, binding.viewmodel, 5) }
-        binding.imageButton16.setOnClickListener { clicEvent(it, binding.viewmodel, 6) }
-        binding.imageButton17.setOnClickListener { clicEvent(it, binding.viewmodel, 7) }
-        binding.imageButton18.setOnClickListener { clicEvent(it, binding.viewmodel, 8) }
-        binding.imageButton20.setOnClickListener { clicEvent(it, binding.viewmodel, 9) }
-        binding.imageButton21.setOnClickListener { clicEvent(it, binding.viewmodel, 10) }
-        binding.imageButton22.setOnClickListener { clicEvent(it, binding.viewmodel, 11) }
-        binding.imageButton23.setOnClickListener { clicEvent(it, binding.viewmodel, 12) }
-        binding.imageButton24.setOnClickListener { clicEvent(it, binding.viewmodel, 13) }
-        binding.imageButton25.setOnClickListener { clicEvent(it, binding.viewmodel, 14) }
-        binding.imageButton26.setOnClickListener { clicEvent(it, binding.viewmodel, 15) }
-        binding.imageButton27.setOnClickListener { clicEvent(it, binding.viewmodel, 16) }
-        binding.imageButton28.setOnClickListener { clicEvent(it, binding.viewmodel, 17) }
+        binding.imageButton10.setOnClickListener { clicEvent(it, 0) }
+        binding.imageButton11.setOnClickListener { clicEvent(it, 1) }
+        binding.imageButton12.setOnClickListener { clicEvent(it, 2) }
+        binding.imageButton13.setOnClickListener { clicEvent(it, 3) }
+        binding.imageButton14.setOnClickListener { clicEvent(it, 4) }
+        binding.imageButton15.setOnClickListener { clicEvent(it, 5) }
+        binding.imageButton16.setOnClickListener { clicEvent(it, 6) }
+        binding.imageButton17.setOnClickListener { clicEvent(it, 7) }
+        binding.imageButton18.setOnClickListener { clicEvent(it, 8) }
+        binding.imageButton20.setOnClickListener { clicEvent(it, 9) }
+        binding.imageButton21.setOnClickListener { clicEvent(it, 10) }
+        binding.imageButton22.setOnClickListener { clicEvent(it, 11) }
+        binding.imageButton23.setOnClickListener { clicEvent(it, 12) }
+        binding.imageButton24.setOnClickListener { clicEvent(it, 13) }
+        binding.imageButton25.setOnClickListener { clicEvent(it, 14) }
+        binding.imageButton26.setOnClickListener { clicEvent(it, 15) }
+        binding.imageButton27.setOnClickListener { clicEvent(it, 16) }
+        binding.imageButton28.setOnClickListener { clicEvent(it, 17) }
     }
 
-    private fun clicEvent(button: View, viewModel: Rfn005ViewModel?, position: Int) {
+    private fun clicEvent(button: View, position: Int) {
         if (button.isSelected) {
-            viewModel?.buttonsMutableList!![position].value?.set(1, 0)
+            binding.viewmodel!!.buttonsMutableList[position][1] = 0
             button.isSelected = false
         } else {
-            viewModel?.buttonsMutableList!![position].value?.set(1, 1)
+            binding.viewmodel!!.buttonsMutableList[position][1] = 1
             button.isSelected = true
         }
         selectedButton(button)
@@ -159,7 +118,8 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
     }
 
     /**Animations**/
-    private fun rotateButton(button: ImageButton, direction: Int) {
+    override fun rotateButton(buttonPosition: Int, direction: Int) {
+        val button = buttonsList[buttonPosition]
         button.isSelected = false
         var animator = ObjectAnimator.ofFloat(button, "rotation", 0f)
         when (direction) {
@@ -196,6 +156,7 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
         intent.putExtra(Companion.GUARDIAN_USER, binding.viewmodel!!.guardianUser!!)
         intent.putExtra(Companion.SAMPLE_CODE, binding.viewmodel!!.sampleCode!!)
         startActivity(intent)
+        finish()
     }
 
     private fun activateViews() {
@@ -205,7 +166,7 @@ class Rfn005Activity : GameActivity(), Rfn005Navigator {
             R.raw.rfn005_instructivo,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {
-                    assignObserversButtons()
+//                    assignObserversButtons()
                     assignClickListenerButtons()
                     activeTimer()
                     binding.statusBar.tvTime.base = SystemClock.elapsedRealtime()

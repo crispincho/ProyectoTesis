@@ -57,6 +57,7 @@ class Rfn004Activity : GameActivity(), Rfn004Navigator {
         intent.putExtra(Companion.GUARDIAN_USER, guardianUser)
         intent.putExtra(Companion.SAMPLE_CODE, sampleCode)
         startActivity(intent)
+        finish()
     }
 
     override fun activateTest() {
