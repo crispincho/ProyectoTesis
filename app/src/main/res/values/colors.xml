@@ -7,6 +7,8 @@
     <color name="keyColor">#65FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="colorButtonSelected">#9050ECAB</color>
+    <color name="buttonGreen">#9050ECAB</color>
     <color name="existsText">@color/colorAccent</color>
     <color name="notExistsText">#90EC115C</color>
+    <color name="buttonRed">#90EC115C</color>
 </resources>
