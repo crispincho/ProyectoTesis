@@ -11,7 +11,7 @@ import com.umb.myapplication.core.ui.GameActivity
 import com.umb.myapplication.databinding.ActivityFormularioBinding
 import com.umb.myapplication.features.formulario.ui.viewmodel.FormularioViewmodel
 import com.umb.myapplication.features.formulario.ui.viewmodel.FormularioViewmodelFactory
-import com.umb.myapplication.features.rfn004.ui.Rfn004Activity
+import com.umb.myapplication.features.start.ui.StartActivity
 
 class FormularioActivity : GameActivity(), FormularioNavigator {
 
@@ -47,7 +47,7 @@ class FormularioActivity : GameActivity(), FormularioNavigator {
         sampleCode: String,
         guardianUser: String
     ) {
-        val intent = Intent(this, Rfn004Activity::class.java)
+        val intent = Intent(this, StartActivity::class.java)
         intent.putExtra(Companion.ID_USER, idUser)
         intent.putExtra(Companion.GUARDIAN_USER, guardianUser)
         intent.putExtra(Companion.SAMPLE_CODE, sampleCode)
