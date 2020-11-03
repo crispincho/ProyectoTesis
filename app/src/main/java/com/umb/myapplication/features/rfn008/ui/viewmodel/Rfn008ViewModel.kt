@@ -165,9 +165,13 @@ class Rfn008ViewModel(application: Application, val context: Context) :
     private fun playAudio() {
         enableView = false
         val mediaPlayer = MediaPlayer.create(context, listAudios[index])
-        mediaPlayer.setOnCompletionListener { enableView = true }
+        mediaPlayer.setOnCompletionListener {
+            enableView = true
+            mediaPlayer.release()
+        }
         mediaPlayer.setOnErrorListener { _, _, _ ->
             enableView = true
+            mediaPlayer.release()
             true
         }
         mediaPlayer.start()

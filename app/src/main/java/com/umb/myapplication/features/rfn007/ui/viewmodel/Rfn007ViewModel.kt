@@ -58,6 +58,7 @@ class Rfn007ViewModel(application: Application, val context: Context) :
             mediaPlayer.start()
             mediaPlayer.setOnCompletionListener {
                 btSpeech.isEnabled=true
+                mediaPlayer.release()
             }
             finalTime = mediaPlayer.duration
             startTime = mediaPlayer.currentPosition
