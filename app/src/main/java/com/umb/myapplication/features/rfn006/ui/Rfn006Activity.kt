@@ -69,7 +69,7 @@ class Rfn006Activity : GameActivity(), Rfn006Navigator {
     private fun activateViews() {
         val dialog = DialogInstructions(
             this,
-            getString(R.string.test_rfn008_instructions),
+            getString(R.string.test_rfn006_instructions),
             R.raw.rfn006_instructivo,
             object : DialogInstructionsListener {
                 override fun dismmissDialog() {
